@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:karhabti_pfe/core/constant/color.dart';
 
 class CustomTextFormAuth extends StatelessWidget {
   final String hinttext;
@@ -22,12 +21,12 @@ class CustomTextFormAuth extends StatelessWidget {
           controller: mycontroller,
           decoration: InputDecoration(
               hintText: hinttext,
-              hintStyle: const TextStyle(fontSize: 15, color: ColorApp.grey ,fontFamily: "Comfortaa",) ,
+              hintStyle: const TextStyle(fontSize: 14, color: Color.fromARGB(255, 131, 127, 127) ,fontFamily: "Comfortaa",fontWeight: FontWeight.w800) ,
               floatingLabelBehavior: FloatingLabelBehavior.always,
               contentPadding:
               const EdgeInsets.symmetric(vertical:20, horizontal: 20),
               
-              suffixIcon: Icon(iconData , color: ColorApp.grey,),
+              suffixIcon: Icon(iconData , color: Color.fromARGB(255, 131, 127, 127),),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(14) ) ,),
         ),

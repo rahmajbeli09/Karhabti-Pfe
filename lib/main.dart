@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/services/themeservice.dart';
 import 'package:karhabti_pfe/routes.dart';
-import 'package:karhabti_pfe/view/screen/onboarding.dart';
+import 'package:karhabti_pfe/view/screen/pageone.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
@@ -15,8 +15,6 @@ void main() async {
   runApp(const MyApp());
 }
 
-
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
@@ -27,9 +25,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: controller.language,
       theme:ThemeService().lightTheme,
-      darkTheme: ThemeService().darkTheme,
+      darkTheme: ThemeService().darkTheme, 
       themeMode: ThemeService().getThemeMode(),
-      home:  OnBoarding(),
+      home:  PageOne(),
       routes: routes,
     );
   }

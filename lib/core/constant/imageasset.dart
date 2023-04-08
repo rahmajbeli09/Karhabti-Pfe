@@ -8,6 +8,8 @@ class ImageAsset {
   static const String profil ="$rootImage/profil.png";
   static const String imagep ="$rootImage/imagep.png";
   static const String image4 ="$rootImage/image4.png";
+  static const String image21 ="$rootImage/image21.png";
+  static const String image22 ="$rootImage/image22.png";
 
 
 }

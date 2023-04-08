@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/controller/auth/logincontroller.dart';
 import 'package:karhabti_pfe/core/function/validinput.dart';
 import 'package:karhabti_pfe/view/widget/auth/customtextbodyauth.dart';
 import 'package:karhabti_pfe/view/widget/auth/textsignuporsignin.dart';
+import '../../../controller/auth/logintechcontroller.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginTech extends StatelessWidget {
+  const LoginTech({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    LoginControllerImp controller =Get.put(LoginControllerImp());
+    LoginTechControllerImp controller =Get.put(LoginTechControllerImp());
     return Scaffold(
                  body: Container(
                   width: 500,

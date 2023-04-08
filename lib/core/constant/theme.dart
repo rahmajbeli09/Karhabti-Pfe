@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ThemeStyle{
   static const TextStyle headline1  = TextStyle(
-                          fontSize: 30 , 
+                          fontSize: 25 , 
                           wordSpacing: 3 , letterSpacing: 1,
                           fontFamily: 'Comfortaa',
                           fontWeight: FontWeight.bold,
@@ -10,7 +10,7 @@ class ThemeStyle{
                            );
   static const TextStyle headline2  = TextStyle(
     fontFamily: "Comfortaa",
-                          fontSize: 20 , 
+                          fontSize: 18 , 
                            );  
   static const TextStyle headline3  = TextStyle(
     fontFamily: "Comfortaa",

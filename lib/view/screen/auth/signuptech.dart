@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/controller/auth/signupcontroller.dart';
+import '../../../controller/auth/signuptechcontroller.dart';
 import '../../../core/function/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
 
-class SignUp extends StatelessWidget {
-   SignUp({Key? key}) : super(key: key);
- SignUpControllerImp controller = Get.put(SignUpControllerImp());
+// ignore: must_be_immutable
+class SignUpTech extends StatelessWidget {
+   SignUpTech({Key? key}) : super(key: key);
+ SignUpTechControllerImp controller = Get.put(SignUpTechControllerImp());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,6 @@ class SignUp extends StatelessWidget {
   ),
                   child: Form(
                   key: controller.formstate,
-                  
                     child: ListView(
                       children: [
           CustomTextTiltleFormAuth(text :"20".tr),
@@ -73,8 +73,40 @@ class SignUp extends StatelessWidget {
           hinttext: "17".tr,
           iconData: Icons.lock_outlined, 
          ),
-         
-         const SizedBox(height: 60,),
+         Container(
+          width: 50,
+          height: 50,
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          decoration: BoxDecoration(
+          color: Color.fromARGB(255, 187, 183, 183).withOpacity(0.6),
+            borderRadius: BorderRadius.circular(15)
+          ),
+
+           child: Obx(
+            
+                    () => DropdownButton<String>(
+                      value: controller.selectedOption.value,
+                      items: [
+                        'mécanicien',
+                        'electricien',
+                        'tolier',
+                        'technicien en pneumatique',
+                        'technicien en vitrage',
+                        'technicien en climatisation',
+                      ].map((String value) {
+                        return DropdownMenuItem<String>(
+                          
+                          value: value,
+                          child: Text(value , style: TextStyle(fontFamily: "Comfortaa" , fontWeight: FontWeight.w600  ) ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        controller.updateSelectedOption(newValue!);
+                      },
+                    ),
+                  ),
+         ),
+         SizedBox(height: 20,),
               CustomButtomAuth(text: "14".tr, onPressed :() {
                 controller.SignUp();
                 controller.goToHomePage();

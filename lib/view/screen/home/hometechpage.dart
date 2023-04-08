@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../widget/home/iconbuttonbar.dart';
 
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeTechPage extends StatelessWidget {
+  const HomeTechPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -15,21 +15,26 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 5,
-        child: Row(
+        child: Column(
           children: [
+            Text("i'm a technicien"),
             Row(
               children: [
-                IconButtonBar(icon: Icons.home_sharp,),
-                IconButtonBar(icon: Icons.car_rental_outlined)
+                Row(
+                  children: [
+                    IconButtonBar(icon: Icons.home_sharp,),
+                    IconButtonBar(icon: Icons.car_rental_outlined)
+                  ],
+                ),
+                Spacer(),
+                Row(
+              children: [
+                IconButtonBar(icon: Icons.directions_car_filled_outlined),
+                IconButtonBar(icon: Icons.person),
               ],
             ),
-            Spacer(),
-            Row(
-          children: [
-            IconButtonBar(icon: Icons.directions_car_filled_outlined),
-            IconButtonBar(icon: Icons.person),
-          ],
-        ),
+              ],
+            ),
           ],
         ),
             
