@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1069399074361",
+    "project_id": "karhabti-50d8b",
+    "storage_bucket": "karhabti-50d8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069399074361:android:cc3aabb1866baa2d68cfe8",
+        "android_client_info": {
+          "package_name": "com.example.karhabti_pfe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069399074361-jtb956mm5ihi959j1pvfd6mhjdsmc1on.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9GGU2lQolRzIJrYDkxw-XqfZ7-BJNpwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069399074361-jtb956mm5ihi959j1pvfd6mhjdsmc1on.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1069399074361-s89j162vr3m1nsddjuqcmgdldkk55a9m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.karhabtiPfe"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

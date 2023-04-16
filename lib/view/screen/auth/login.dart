@@ -9,7 +9,7 @@ import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
 import '../../widget/mode.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatelessWidget { //this should be stateful because we're gonna need the state later
   const Login({Key? key}) : super(key: key);
 
   @override

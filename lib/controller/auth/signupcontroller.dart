@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
 
 abstract class SignUpController extends GetxController{
+  static SignUpController get instance => Get.find();
   SignUp();
   goToSignUp();
   goToHomePage();
@@ -11,14 +12,18 @@ abstract class SignUpController extends GetxController{
 
 class SignUpControllerImp extends SignUpController{
   
+  //i added this from a prev vid
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   late TextEditingController username ; 
   late TextEditingController phone ; 
   late TextEditingController email ; 
   late TextEditingController password ; 
-   
 
+//call this function from design and it will do the rest
+void registerUser(String email, String password){
+
+}
   SignUp(){
     var formdata = formstate.currentState;
     if (formdata!.validate()){
