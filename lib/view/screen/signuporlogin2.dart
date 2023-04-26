@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controller/client/signuporlogincontroller.dart';
+import '../../controller/technicien/signuporlogin2controller.dart';
 
 
-class SignUpOrLogin extends StatelessWidget {
-  const SignUpOrLogin({Key? key}) : super(key: key);
+class SignUpOrLogin2 extends StatelessWidget {
+  const SignUpOrLogin2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    SignUpOrLoginControllerImp controller = Get.put(SignUpOrLoginControllerImp());
+    SignUpOrLogin2ControllerImp controller = Get.put(SignUpOrLogin2ControllerImp());
     return Scaffold(
       body:Container(
         padding: EdgeInsets.symmetric(vertical: 60),

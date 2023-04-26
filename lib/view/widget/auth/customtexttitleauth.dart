@@ -12,6 +12,7 @@ class CustomTextTiltleFormAuth extends StatelessWidget {
             text,
             textAlign: TextAlign.left,
             style: ThemeStyle.headline1,
+            
           );
   }
 }

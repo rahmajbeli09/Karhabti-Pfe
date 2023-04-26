@@ -1,18 +1,18 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
 
 abstract class SignUpController extends GetxController{
   static SignUpController get instance => Get.find();
+  signUp(String email, String password);
   SignUp();
   goToSignUp();
   goToHomePage();
 }
 
 class SignUpControllerImp extends SignUpController{
-  
-  //i added this from a prev vid
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   late TextEditingController username ; 
@@ -21,8 +21,8 @@ class SignUpControllerImp extends SignUpController{
   late TextEditingController password ; 
 
 //call this function from design and it will do the rest
-void registerUser(String email, String password){
-
+Future<void> registerUser(String email, String password) async {
+ await signUp(email, password);
 }
   SignUp(){
     var formdata = formstate.currentState;
@@ -59,4 +59,28 @@ void registerUser(String email, String password){
   goToHomePage() {
     Get.toNamed(AppRoute.home);
   }
-}
+   @override
+    Future<void> signUp(String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      print('User created: ${userCredential.user}');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    if (user != null) {
+      print(user.uid);
+    }
+  });
+  }
+
+} 

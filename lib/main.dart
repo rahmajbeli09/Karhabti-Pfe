@@ -4,11 +4,16 @@ import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/services/themeservice.dart';
 import 'package:karhabti_pfe/firebase_options.dart';
 import 'package:karhabti_pfe/routes.dart';
-import 'package:karhabti_pfe/view/screen/onboarding.dart';
+import 'package:karhabti_pfe/services/auth.dart';
+import 'package:karhabti_pfe/view/screen/pageone.dart';
+import 'package:provider/provider.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 void main() async {
@@ -17,11 +22,13 @@ void main() async {
   await Firebase.initializeApp(
     options:DefaultFirebaseOptions.currentPlatform,
     );
+
+
+
   await initialServices();
-  runApp(const MyApp());
+  runApp(MyApp(),
+  );
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -33,9 +40,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: controller.language,
       theme:ThemeService().lightTheme,
-      darkTheme: ThemeService().darkTheme,
+      darkTheme: ThemeService().darkTheme, 
       themeMode: ThemeService().getThemeMode(),
-      home:  OnBoarding(),
+      home:  PageOne(),
       routes: routes,
     );
   }

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/controller/auth/signupcontroller.dart';
+import '../../../controller/auth/signuptechcontroller.dart';
 import '../../../core/function/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
 
-class SignUp extends StatelessWidget { //It means that it does not have any mutable state, and its state is only dependent on the parameters passed to it. This class represents a reusable UI widget 
-   SignUp({Key? key}) : super(key: key); //The constructor takes a Key parameter and passes it to the superclass constructor. The key parameter is optional and allows for the widget's identity to be preserved across widget rebuilds.
- SignUpControllerImp controller = Get.put(SignUpControllerImp()); //This method is part of the GetX package and registers a new instance of the SignUpControllerImp class to be globally accessible within the widget tree.
- final key = GlobalKey<FormState>(); //The key variable is defined to hold a global key that is used to identify this widget in the widget tree.
+// ignore: must_be_immutable
+class SignUpTech extends StatelessWidget {
+   SignUpTech({Key? key}) : super(key: key);
+ SignUpTechControllerImp controller = Get.put(SignUpTechControllerImp());
   @override
-  Widget build(BuildContext context) { //The build method is overridden to create the UI of the sign-up screen. It returns a Scaffold widget with an AppBar and a Container containing the sign-up form
+  Widget build(BuildContext context) {
     return Scaffold(
     
                  body: Container(
@@ -25,9 +25,7 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
     ),
   ),
                   child: Form(
-                  
                   key: controller.formstate,
-                  
                     child: ListView(
                       children: [
           CustomTextTiltleFormAuth(text :"20".tr),
@@ -35,9 +33,7 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
           CustomTextBodyAuth(text: "21".tr),
          const SizedBox(height: 60,),
         
-          CustomTextFormAuth( 
-            //The CustomTextFormAuth widget is used to create input fields for the user to enter their username, email, phone number, and password. It accepts various parameters, such as valid, which is a callback function that validates the input based on certain criteria, mycontroller, which is an instance of the TextEditingController class used to control the input field's text, hinttext, which is the placeholder text for the input field, and iconData, which is the icon displayed next to the input field.
-            
+          CustomTextFormAuth(
              valid:(val){
                 return ValidInput(val!, 8,30, "username");
             },
@@ -77,10 +73,41 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
           hinttext: "17".tr,
           iconData: Icons.lock_outlined, 
          ),
-         
-         const SizedBox(height: 60,),
+         Container(
+          width: 50,
+          height: 50,
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          decoration: BoxDecoration(
+          color: Color.fromARGB(255, 187, 183, 183).withOpacity(0.6),
+            borderRadius: BorderRadius.circular(15)
+          ),
+
+           child: Obx(
+            
+                    () => DropdownButton<String>(
+                      value: controller.selectedOption.value,
+                      items: [
+                        'mécanicien',
+                        'electricien',
+                        'tolier',
+                        'technicien en pneumatique',
+                        'technicien en vitrage',
+                        'technicien en climatisation',
+                      ].map((String value) {
+                        return DropdownMenuItem<String>(
+                          
+                          value: value,
+                          child: Text(value , style: TextStyle(fontFamily: "Comfortaa" , fontWeight: FontWeight.w600  ) ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        controller.updateSelectedOption(newValue!);
+                      },
+                    ),
+                  ),
+         ),
+         SizedBox(height: 20,),
               CustomButtomAuth(text: "14".tr, onPressed :() {
-              
                 controller.SignUp();
                 controller.goToHomePage();
               }),

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/controller/client/onboarding_controller.dart';
-import 'package:karhabti_pfe/view/widget/onboarding/client/custombutton.dart';
-import 'package:karhabti_pfe/view/widget/onboarding/client/customslider.dart';
-import 'package:karhabti_pfe/view/widget/onboarding/client/dotcontroller.dart';
-import '../widget/onboarding/client/skipbutton.dart';
+import 'package:karhabti_pfe/view/widget/onboarding/technicien/skipbuton2.dart';
+import '../../controller/technicien/onboarding2_controller.dart';
+import '../widget/onboarding/technicien/customslider2.dart';
+import '../widget/onboarding/technicien/cutombuton2.dart';
+import '../widget/onboarding/technicien/dotcontroller2.dart';
 
-class OnBoarding extends StatelessWidget {
-  const OnBoarding({Key? key}) : super(key: key);
+class OnBoarding2 extends StatelessWidget {
+  const OnBoarding2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(OnBoardingControllerImp());
+    Get.put(OnBoarding2ControllerImp());
     return Scaffold(
       body: 
         Container(
@@ -27,18 +27,18 @@ class OnBoarding extends StatelessWidget {
               children: [
                 const Expanded(
                   flex: 4,
-                  child: CustomSliderOnBoarding()
+                  child: CustomSlider2OnBoarding()
                 ),
                 Expanded(
                   flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:const [
-                     SkipButton(),
-                     SizedBox(width: 28,),
-                    CustomDotController(),
-                    SizedBox(width: 28,),
-                    CustomButtonOnBoarding(),
+                     SkipButton2(),
+                     
+                    CustomDot2Controller(),
+                    
+                    CustomButton2OnBoarding(),
                ] 
                ))
               ],
