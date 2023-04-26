@@ -1,35 +1,33 @@
 import 'package:flutter/material.dart';
 
 class VerticalContainer extends StatelessWidget {
-  const VerticalContainer({Key? key, required this.image, required this.text, required this.color1,  required this.color2}) : super(key: key);
+  const VerticalContainer({Key? key, required this.image, required this.text, }) : super(key: key);
   final String image;
   final String text ; 
-  final Color color1 ;
-  final Color color2 ; 
+  
 
   @override
   Widget build(BuildContext context) {
     return  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 15 , vertical: 20),
-                    padding: EdgeInsets.only(top: 40),
-                    width: 165,
-                    height: 230,
+                    margin: EdgeInsets.symmetric(horizontal: 15 , vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 30 ),
+                    width: 400,
+                    height: 330,
                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            color1,
-                            color2,                            
-                          ],
-                        ),
-                       borderRadius: BorderRadius.circular(40) 
+                        color: Colors.white,
+                              boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 2,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), 
+                                  ),],
+                                  borderRadius: BorderRadius.circular(20)
                       ),
                   child: Column(
                     children: [
-                      Center(child: Text(text , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.w600 ,fontFamily: "Comfortaa", ),)),
-                      SizedBox(height: 30,),
-                      Image.asset(image , width: 90, height: 90,), 
+                      Text(text , style: TextStyle(fontFamily: "Comfortaa" , fontSize: 15, fontWeight: FontWeight.w700),textAlign: TextAlign.center,),
+                      Image.asset(image ,fit: BoxFit.cover, height: 230,), 
                     ],
                   ),
                 );

@@ -5,7 +5,7 @@ import 'package:karhabti_pfe/core/constant/routes.dart';
 
 abstract class LoginController extends GetxController{
   login();
-  goToSignUp();
+  goToSignUp(); 
 }
 
 class LoginControllerImp extends LoginController{
@@ -14,6 +14,11 @@ class LoginControllerImp extends LoginController{
   
   late TextEditingController email ; 
   late TextEditingController password ; 
+   bool isshowpassword = true ;
+   showPassword(){
+    isshowpassword = isshowpassword == true ?false : true;
+    update();
+   }
 
   login(){
     var formdata = formstate.currentState;
@@ -22,7 +27,7 @@ class LoginControllerImp extends LoginController{
     }else{
       print("not Valid");
     }
-    Get.toNamed(AppRoute.home);
+    Get.offAllNamed(AppRoute.homescreen);
 
   }
   

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:karhabti_pfe/core/function/alertexitapp.dart';
+import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
 import '../../../controller/auth/signuptechcontroller.dart';
 import '../../../core/function/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
@@ -15,7 +17,7 @@ class SignUpTech extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
     
-                 body: Container(
+                 body: WillPopScope(child: Container(
                         width: 500,
         padding: EdgeInsets.symmetric( horizontal: 25 , vertical: 10),
           decoration: BoxDecoration(
@@ -57,22 +59,32 @@ class SignUpTech extends StatelessWidget {
           hinttext: "23".tr,
           iconData: Icons.phone_outlined,
          ),
-          CustomTextFormAuth(
-             valid:(val){
-             return ValidInput(val!, 8,30, "password");
-            },
-            mycontroller: controller.password,
-          hinttext: "17".tr,
-          iconData: Icons.lock_outlined, 
-         ),
-         CustomTextFormAuth(
-             valid:(val){
-             return ValidInput(val!, 8,30, "password");
-            },
-            mycontroller: controller.password,
-          hinttext: "17".tr,
-          iconData: Icons.lock_outlined, 
-         ),
+         GetBuilder<SignUpTechControllerImp>
+                           (builder: (controller) => CustomTextFormAuth(
+                            obscureText: controller.isshowpassword,
+                            onTapIcon:(){
+                              controller.showPassword();
+                            } ,
+                              valid:(val){
+                               return ValidInput(val!, 8,30, "password");
+                             },
+                           mycontroller: controller.password,
+                           hinttext: "17".tr,
+                           iconData: Icons.lock_outlined ,
+                          ),),
+         GetBuilder<SignUpTechControllerImp>
+                           (builder: (controller) => CustomTextFormAuth(
+                            obscureText: controller.isshowpassword,
+                            onTapIcon:(){
+                              controller.showPassword();
+                            } ,
+                              valid:(val){
+                               return ValidInput(val!, 8,30, "password");
+                             },
+                           mycontroller: controller.password2,
+                           hinttext: "17".tr,
+                           iconData: Icons.lock_outlined ,
+                          ),),
          Container(
           width: 50,
           height: 50,
@@ -111,11 +123,13 @@ class SignUpTech extends StatelessWidget {
                 controller.SignUp();
                 controller.goToHomePage();
               }),
+              SocialMedia()
                     
                       ],
                     ),
                   ),
                  ),
+                 onWillPop: alertExitApp)
                 );
   }
 }

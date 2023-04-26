@@ -1,59 +1,36 @@
-
 import 'package:flutter/material.dart';
 
 class HorizontalContainer extends StatelessWidget {
-  const HorizontalContainer({Key? key,  required this.title, required this.image, required this.heur,  required this.ampm, required this.date, required this.sizedbox}) : super(key: key);
-  final String title;
-  final String image ; 
-  final String heur;
-  final String ampm ; 
-  final String date ; 
-  final double sizedbox ; 
+  final String image ;
+  final String text;
+  const HorizontalContainer({Key? key, required this.image, required this.text}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-                padding: EdgeInsets.symmetric(horizontal: 15 , vertical: 5),
-                margin: EdgeInsets.symmetric(horizontal: 10 ,vertical: 10),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromARGB(255, 124, 126, 124),
-                            Color.fromARGB(255, 215, 209, 215),                           
-                          ],
-                        ),
-                  borderRadius: BorderRadius.circular(25)
-                ),
-                height: 160,
-                width: 325,
-                child: Column(
-                  children: [
-                    Row(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    margin: EdgeInsets.all(20),
+                    height: 200,
+                    width:340,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                              boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 2,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), 
+                                  ),]
+                    ),
+                    child: Row(
                       children: [
-                        Text(title ,style: TextStyle(fontSize: 27, fontWeight: FontWeight.w600 ,fontFamily: "Comfortaa",),),
-                        SizedBox(width: sizedbox,),
-                        Image.asset( image , width: 90, height: 120,)
+                        Text(text ,style: TextStyle(fontFamily: "Comfortaa" , fontSize:18, fontWeight: FontWeight.w700),),
+                        Image.asset(image , height: 140,width: 140,)
                       ],
                     ),
-                    Row(children: [
-                      Text(heur , style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold , fontFamily: "Comfortaa",),),
-                      Container(child: Text(ampm , style: TextStyle(color: Colors.white ,fontFamily: "Comfortaa",),),
-                       margin: EdgeInsets.symmetric(horizontal: 7),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Colors.pink,
-                          borderRadius: BorderRadius.circular(15) 
-                        ),),
-                      Container(child: Text(date, style: TextStyle(color: Colors.white , fontFamily: "Comfortaa",),), 
-                       padding: EdgeInsets.all(5),
-                       decoration: BoxDecoration(
-                           color: Colors.blue,
-                          borderRadius: BorderRadius.circular(15) 
-                        ),)
-                    ],)
-                  ],
-                ),
-              );
+                 
+      
+    );
   }
 }

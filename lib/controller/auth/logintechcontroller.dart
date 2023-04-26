@@ -14,6 +14,11 @@ class LoginTechControllerImp extends LoginTechController{
   
   late TextEditingController email ; 
   late TextEditingController password ; 
+  bool isshowpassword = true ;
+   showPassword(){
+    isshowpassword = isshowpassword == true ?false : true;
+    update();
+   }
 
   login(){
     var formdata = formstate.currentState;
@@ -22,7 +27,7 @@ class LoginTechControllerImp extends LoginTechController{
     }else{
       print("not Valid");
     }
-    Get.toNamed(AppRoute.hometech);
+    Get.offAllNamed(AppRoute.hometech);
 
   }
   

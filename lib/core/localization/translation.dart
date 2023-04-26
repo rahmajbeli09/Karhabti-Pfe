@@ -75,7 +75,7 @@ class MyTranslation extends Translations{
             "18" : "Mot de passe oublié",
             "19" : "Vous n'avez pas de compte",
             "20" : "Content de vous revoir. ",
-            "21" : "Inscrivez-vous avec votre adresse e-mail et votre mot de passe ou continuez avec les réseaux sociaux",
+            "21" : "Inscrivez-vous avec votre adresse e-mail et votre mot de passe. ",
             "22" : "Entrer votre nom utilisateur",
             "23" : "Entrer vote numéro de telephone"
            },

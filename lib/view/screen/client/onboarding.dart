@@ -4,7 +4,7 @@ import 'package:karhabti_pfe/controller/client/onboarding_controller.dart';
 import 'package:karhabti_pfe/view/widget/onboarding/client/custombutton.dart';
 import 'package:karhabti_pfe/view/widget/onboarding/client/customslider.dart';
 import 'package:karhabti_pfe/view/widget/onboarding/client/dotcontroller.dart';
-import '../widget/onboarding/client/skipbutton.dart';
+import '../../widget/onboarding/client/skipbutton.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({Key? key}) : super(key: key);
@@ -35,9 +35,7 @@ class OnBoarding extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:const [
                      SkipButton(),
-                     SizedBox(width: 28,),
                     CustomDotController(),
-                    SizedBox(width: 28,),
                     CustomButtonOnBoarding(),
                ] 
                ))

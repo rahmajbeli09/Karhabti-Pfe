@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/services/themeservice.dart';
 import 'package:karhabti_pfe/routes.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/profil.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/homepage.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/homescreen.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/localisation.dart';
 import 'package:karhabti_pfe/view/screen/pageone.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeService().darkTheme, 
       themeMode: ThemeService().getThemeMode(),
       home:  PageOne(),
-      routes: routes,
+      getPages: routes
     );
   }
 }

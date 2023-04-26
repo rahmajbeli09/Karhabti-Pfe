@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/auth/signupcontroller.dart';
+import 'package:karhabti_pfe/core/function/alertexitapp.dart';
+import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
 import '../../../core/function/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
-
 class SignUp extends StatelessWidget {
    SignUp({Key? key}) : super(key: key);
  SignUpControllerImp controller = Get.put(SignUpControllerImp());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
-                 body: Container(
+                 body: WillPopScope(child: Container(
                         width: 500,
         padding: EdgeInsets.symmetric( horizontal: 25 , vertical: 10),
           decoration: BoxDecoration(
@@ -23,16 +23,16 @@ class SignUp extends StatelessWidget {
       fit: BoxFit.fitHeight,
     ),
   ),
+  
                   child: Form(
                   key: controller.formstate,
-                  
                     child: ListView(
                       children: [
+                        Image.asset("assets/images/signup.png" , height: 170, width: 50, alignment: Alignment.topLeft,),
           CustomTextTiltleFormAuth(text :"20".tr),
-         const SizedBox(height: 20,),
+         const SizedBox(height: 10,),
           CustomTextBodyAuth(text: "21".tr),
-         const SizedBox(height: 60,),
-        
+        SizedBox(height: 15,),
           CustomTextFormAuth(
              valid:(val){
                 return ValidInput(val!, 8,30, "username");
@@ -57,33 +57,46 @@ class SignUp extends StatelessWidget {
           hinttext: "23".tr,
           iconData: Icons.phone_outlined,
          ),
-          CustomTextFormAuth(
-             valid:(val){
-             return ValidInput(val!, 8,30, "password");
-            },
-            mycontroller: controller.password,
-          hinttext: "17".tr,
-          iconData: Icons.lock_outlined, 
-         ),
-         CustomTextFormAuth(
-             valid:(val){
-             return ValidInput(val!, 8,30, "password");
-            },
-            mycontroller: controller.password,
-          hinttext: "17".tr,
-          iconData: Icons.lock_outlined, 
-         ),
-         
-         const SizedBox(height: 60,),
-              CustomButtomAuth(text: "14".tr, onPressed :() {
+          GetBuilder<SignUpControllerImp>
+                           (builder: (controller) => CustomTextFormAuth(
+                            obscureText: controller.isshowpassword,
+                            onTapIcon:(){
+                              controller.showPassword();
+                            } ,
+                              valid:(val){
+                               return ValidInput(val!, 8,30, "password");
+                             },
+                           mycontroller: controller.password,
+                           hinttext: "17".tr,
+                           iconData: Icons.lock_outlined ,
+                          ),),
+         GetBuilder<SignUpControllerImp>
+                           (builder: (controller) => CustomTextFormAuth(
+                            obscureText: controller.isshowpassword,
+                            onTapIcon:(){
+                              controller.showPassword();
+                            } ,
+                              valid:(val){
+                               return ValidInput(val!, 8,30, "password");
+                             },
+                           mycontroller: controller.password2,
+                           hinttext: "17".tr,
+                           iconData: Icons.lock_outlined ,
+                          ),),
+         const SizedBox(height: 10,),
+                       CustomButtomAuth(text: "14".tr, onPressed :() {
                 controller.SignUp();
                 controller.goToHomePage();
+                 controller.isBlur.value = true;
               }),
+              SocialMedia(),
                     
                       ],
                     ),
                   ),
                  ),
+                 
+                 onWillPop: alertExitApp)
                 );
   }
 }
