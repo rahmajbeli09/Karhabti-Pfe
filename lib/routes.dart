@@ -4,15 +4,18 @@ import 'package:karhabti_pfe/core/constant/routes.dart';
 import 'package:karhabti_pfe/view/screen/auth/login.dart';
 import 'package:karhabti_pfe/view/screen/auth/logintech.dart';
 import 'package:karhabti_pfe/view/screen/auth/signup.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/annonces.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/editprofil.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/rendez-vous.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/homepage.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/homescreen.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/localisation.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/map.dart';
 import 'package:karhabti_pfe/view/screen/client/onboarding.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/panne.dart';
 import 'package:karhabti_pfe/view/screen/technicien/onboarding2.dart';
 import 'package:karhabti_pfe/view/screen/technicien/signuporlogin2.dart';
-import 'package:karhabti_pfe/view/screen/technicien/venteachat.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/venteachat.dart';
 import 'view/screen/auth/signuptech.dart';
 import 'view/screen/client/homepage/postulation.dart';
 import 'view/screen/technicien/hometechpage.dart';
@@ -34,6 +37,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.loc, page: ()=>Localisezvous()),
   GetPage(name: AppRoute.post, page: ()=>Postulation()),
   GetPage(name: AppRoute.edit, page: ()=>EditProfil()),
+  GetPage(name: AppRoute.map, page: ()=>MapPage()),
+  GetPage(name: AppRoute.rendezvous, page: ()=>RendezVous()),
+  GetPage(name: AppRoute.annonces, page: ()=>Annonces()),
  
 
 

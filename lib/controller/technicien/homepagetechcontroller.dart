@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/core/constant/routes.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 abstract class HomePageTechController extends GetxController{

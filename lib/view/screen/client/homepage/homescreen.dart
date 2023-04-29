@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:karhabti_pfe/view/widget/home/custombottombar.dart';
 
 import '../../../../controller/client/homescreencontroller.dart';
-import '../../../widget/home/buttombar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

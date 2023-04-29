@@ -5,6 +5,7 @@ import 'package:karhabti_pfe/view/screen/client/homepage/map.dart';
 import 'package:karhabti_pfe/view/widget/boutton.dart';
 import '../../../../controller/client/locationcontroller.dart';
 
+// ignore: must_be_immutable
 class Localisezvous extends StatelessWidget {
    Localisezvous({Key? key}) : super(key: key);
     Location_ControllerImp controller = Get.put(Location_ControllerImp());
@@ -18,10 +19,7 @@ class Localisezvous extends StatelessWidget {
   print('Longitude: ${position.longitude}');
 
 }
-@override
-void initState() {
-  getLocation();
-}
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +48,7 @@ void initState() {
               SizedBox(height: 80,),
               Boutton(text: "Localisez-Vous" , onPressed: ()async{
 
-                controller.getLocation();
+                
                await Get.to(MapPage());
               },
               color: Color.fromARGB(255, 255, 203, 30),)

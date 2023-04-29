@@ -8,6 +8,7 @@ import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
+// ignore: must_be_immutable
 class SignUp extends StatelessWidget {
    SignUp({Key? key}) : super(key: key);
  SignUpControllerImp controller = Get.put(SignUpControllerImp());

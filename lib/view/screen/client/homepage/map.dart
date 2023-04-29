@@ -10,19 +10,18 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
 
-  Position?ab;
+  Position?cl;
   CameraPosition? _kGooglePlex;
-    late GoogleMapController _mapController;
 
 
    Future<void> getpos() async {
     await Geolocator.checkPermission();
     await Geolocator.requestPermission();
 
-  ab=   await Geolocator.getCurrentPosition(
+  cl=   await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
         _kGooglePlex = CameraPosition(
-        target: LatLng(ab!.latitude, ab!.longitude), zoom: 17.4746);
+        target: LatLng(cl!.latitude, cl!.longitude), zoom: 17.4746);
    }
   Set<Marker> mymarker = {
 
@@ -30,7 +29,7 @@ class _MapPageState extends State<MapPage> {
 
  Chang(newlat,newlong)async{
     mymarker.remove(Marker(markerId: MarkerId("1")));
-    await    mymarker.add(Marker(markerId: MarkerId("1"),position: LatLng(newlat, newlong)));
+    await mymarker.add(Marker(markerId: MarkerId("1"),position: LatLng(newlat, newlong)));
    
   }
 @override
@@ -49,17 +48,13 @@ void initState() {
       body: 
            Center(
             child: 
-          
-        
-
-        Container(
+            Container(
           child: Stack(
             children: [
               GoogleMap(
                 markers:mymarker,
-                
                  initialCameraPosition: _kGooglePlex == null
-            ? CameraPosition(target: LatLng(ab!.latitude, ab!.longitude))
+            ? CameraPosition(target: LatLng(2, 3))
             : _kGooglePlex!,
                /* myLocationEnabled: true,
                 myLocationButtonEnabled: false,
@@ -73,7 +68,7 @@ void initState() {
                 left: 150.0,
                 child: IconButton(onPressed: ()async{
                   setState(() {
-      Chang(ab!.latitude,ab!.longitude);
+      Chang(cl!.latitude,cl!.longitude);
                   });
                 },  
                 icon: Icon(Icons.location_searching_rounded,size: 60,) ,

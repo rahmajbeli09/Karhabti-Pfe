@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/client/homepagecontroller.dart';
 
+// ignore: must_be_immutable
 class ButtomBar extends StatelessWidget {
  final Function()? onPressed;
  final IconData icon ; 

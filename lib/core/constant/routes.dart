@@ -15,6 +15,11 @@ class AppRoute{
   static const String loc = "/loc";
   static const String post = "/post";
   static const String edit = "/edit";
+  static const String map = "/map";
+  static const String rendezvous = "/rendezvous";
+  static const String annonces = "/annonces";
+
+
 
  
 

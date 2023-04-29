@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:karhabti_pfe/controller/client/rendezvouscontroller.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
 import 'package:karhabti_pfe/view/widget/home/nomet%20prenomcontainer.dart';
 import 'package:karhabti_pfe/view/widget/home/profilcontainer.dart';
 
+import 'rendez-vous.dart';
+
 class Profil extends StatelessWidget {
-  const Profil({Key? key}) : super(key: key);
+   Profil({Key? key}) : super(key: key);
+  RendezVousControllerImp controller = Get.put(RendezVousControllerImp());
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +32,26 @@ class Profil extends StatelessWidget {
                 icon: Icons.calendar_month, 
                 Titre: "  Mes rendez-vous", 
                 text: "Organisez votre emploi du temps en consultant vos rendez-vous prévus.",
+                onTap: (){
+                  controller.goToRendezVous();
+                },
                 ),
                 ProfilContainer(
                 icon: Icons.campaign, 
                 Titre: "  Mes annonces", 
                 text: "Gérer, modifier et booster vos annonce.",
+                onTap: (){
+                  controller.goToAnnonces();
+                },
                 ),
 
-                Row(children: [
-                  Text("Déconnexion") , 
-                  IconButton(onPressed: (){}, icon: Icon(Icons.logout_outlined)),
-                ],),
+                Container(
+                  margin: EdgeInsets.only(left: 250),
+                  child: Row(children: [
+                    Text("Déconnexion") , 
+                    IconButton(onPressed: (){}, icon: Icon(Icons.logout_outlined)),
+                  ],),
+                ),
             ],
           ),
         ],
