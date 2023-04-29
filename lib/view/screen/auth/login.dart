@@ -15,7 +15,8 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginControllerImp controller =Get.put(LoginControllerImp());
- 
+    var email = TextEditingController();
+   var password = TextEditingController();
   
     return Scaffold(
                  body: Container(
@@ -42,7 +43,7 @@ class Login extends StatelessWidget {
                              valid:(val){
                                return ValidInput(val!, 8,30, "email");
                              },
-                           mycontroller: controller.email,
+                           mycontroller: controller.email, //ahaya instead of controller : passwordcontroller;
                            hinttext: "16".tr,
                            iconData: Icons.email_outlined,
                           ),
@@ -75,4 +76,12 @@ class Login extends StatelessWidget {
                 );
 
   }
+                       // signIn(){
+                       // setState((){
+                       // inLoginProcess= true;
+                      //AuthService().signInWithGoogle();
+                      //   }
+                       //);
+              
+                       // }
 } 

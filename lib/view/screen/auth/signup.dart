@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:karhabti_pfe/controller/auth/authcontroller.dart';
 import 'package:karhabti_pfe/controller/auth/signupcontroller.dart';
 import '../../../core/function/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
@@ -10,12 +11,19 @@ import '../../widget/auth/customtexttitleauth.dart';
 class SignUp extends StatelessWidget { //It means that it does not have any mutable state, and its state is only dependent on the parameters passed to it. This class represents a reusable UI widget 
    SignUp({Key? key}) : super(key: key); //The constructor takes a Key parameter and passes it to the superclass constructor. The key parameter is optional and allows for the widget's identity to be preserved across widget rebuilds.
  SignUpControllerImp controller = Get.put(SignUpControllerImp()); //This method is part of the GetX package and registers a new instance of the SignUpControllerImp class to be globally accessible within the widget tree.
+ 
  final key = GlobalKey<FormState>(); //The key variable is defined to hold a global key that is used to identify this widget in the widget tree.
   @override
   Widget build(BuildContext context) { //The build method is overridden to create the UI of the sign-up screen. It returns a Scaffold widget with an AppBar and a Container containing the sign-up form
+   var email = TextEditingController();
+   var password = TextEditingController();
     return Scaffold(
     
-                 body: Container(
+                 body: GestureDetector(
+                  onTap: (){
+                    AuthController.instance.register(controller.email.text.trim(), controller.password.text.trim());
+                  } ,
+                  child: Container(
                         width: 500,
         padding: EdgeInsets.symmetric( horizontal: 25 , vertical: 10),
           decoration: BoxDecoration(
@@ -88,6 +96,7 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
                       ],
                     ),
                   ),
+                 ),
                  ),
                 );
   }

@@ -1,3 +1,4 @@
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -7,9 +8,9 @@ if (localPropertiesFile.exists()) {
 }
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
-//if (flutterRoot == null) {
-    //throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-//} i made these as comments because i encountered a problem 
+if (flutterRoot == null) {
+    throw GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+} 
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
@@ -31,7 +32,7 @@ android {
     // i added this for the SHA-1 
    signingConfigs {
         debug {
-            storeFile file('debug.keystore')
+            storeFile file('C:/src/Karhabti-Pfe/debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
@@ -59,6 +60,8 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
+
     }
 
     buildTypes {
@@ -78,5 +81,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:31.3.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
-    classpath 'com.android.tools.build:gradle:7.0.2' //added this to fix the error related to the previous lines
+    //classpath 'com.android.tools.build:gradle:7.0.2' //added this to fix the error related to the previous lines
 }
