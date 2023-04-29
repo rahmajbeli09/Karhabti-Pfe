@@ -34,6 +34,11 @@ class Profil extends StatelessWidget {
                 Titre: "  Mes annonces", 
                 text: "Gérer, modifier et booster vos annonce.",
                 ),
+
+                Row(children: [
+                  Text("Déconnexion") , 
+                  IconButton(onPressed: (){}, icon: Icon(Icons.logout_outlined)),
+                ],),
             ],
           ),
         ],

@@ -39,7 +39,7 @@ class SignUpOrLogin extends StatelessWidget {
                     Text("Connectez-vous si vous avez de compte \n ou inscrivez-vous pour nous rejoindre ",
                     style: TextStyle(fontWeight: FontWeight.w500 , fontSize: 15 , fontFamily: "Comfortaa"),
                     ),
-                    SizedBox(height: 65,),
+                    SizedBox(height: 45,),
                     Column(
                       children: [
                         Boutton(
