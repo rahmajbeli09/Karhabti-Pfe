@@ -11,6 +11,7 @@ import 'package:karhabti_pfe/view/screen/pageone.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
+import 'view/screen/client/homepage/map.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();

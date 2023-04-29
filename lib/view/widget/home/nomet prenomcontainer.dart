@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/core/constant/imageasset.dart';
 
 class NomEtPrenomContainer extends StatelessWidget {
   const NomEtPrenomContainer({Key? key}) : super(key: key);

@@ -7,7 +7,8 @@
         android:label="karhabti_pfe"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        
+        <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyBkKs82L66jBg20jlFOGMwJL6oljrKGDV8"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

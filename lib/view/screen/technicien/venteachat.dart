@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../../controller/client/ventachcontroller.dart';
 
 
+// ignore: must_be_immutable
 class VenteAchat extends StatelessWidget {
    VenteAchat({Key? key}) : super(key: key);
     VentAchCotrollerImp controller = Get.put(VentAchCotrollerImp());
