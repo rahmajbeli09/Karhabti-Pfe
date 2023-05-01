@@ -29,12 +29,13 @@ class SignUpTechControllerImp extends SignUpTechController{
    
 
   SignUp(){
-    var formdata = formstate.currentState;
-    if (formdata!.validate()){
-        print("valid");
-    }else{
-      print("not Valid");
-    }
+    //var formdata = formstate.currentState;
+    //if (formdata!.validate()){
+      //  print("valid");
+   // }else{
+     // print("not Valid");
+    //}
+    Get.offAllNamed(AppRoute.homescreentech);
   }
   
   @override

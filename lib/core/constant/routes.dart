@@ -22,6 +22,7 @@ class AppRoute{
   static const String homescreentech = "/homescreentech";
   static const String edittechprofil = "/edittechprofil";
   static const String adresse = "/adresse";
+  static const String rendezvoustech="/rendezvoustech";
 
 
 

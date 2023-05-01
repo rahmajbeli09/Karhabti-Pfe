@@ -17,6 +17,7 @@ import 'package:karhabti_pfe/view/screen/technicien/home/buttombar/profil/adress
 import 'package:karhabti_pfe/view/screen/technicien/home/buttombar/profil/edittechprofil.dart';
 import 'package:karhabti_pfe/view/screen/technicien/home/buttombar/profil/maptech.dart';
 import 'package:karhabti_pfe/view/screen/technicien/home/hometechscreen.dart';
+import 'package:karhabti_pfe/view/screen/technicien/home/rendezvoustech.dart';
 import 'package:karhabti_pfe/view/screen/technicien/onboarding2.dart';
 import 'package:karhabti_pfe/view/screen/technicien/signuporlogin2.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/venteachat.dart';
@@ -48,6 +49,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.annonces, page: ()=>Annonces()),
   GetPage(name: AppRoute.edittechprofil, page: ()=>EditTechProfil()),
   GetPage(name: AppRoute.adresse, page: ()=>Adresse()),
+  GetPage(name: AppRoute.rendezvoustech, page: ()=>RendezVousTech()),
  
 
 

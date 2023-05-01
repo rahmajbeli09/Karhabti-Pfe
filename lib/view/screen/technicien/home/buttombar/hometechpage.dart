@@ -1,23 +1,35 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: must_be_immutable
 
-import '../../../../widget/home/calendrier.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:karhabti_pfe/controller/technicien/homepagetechcontroller.dart';
+import '../../../../../controller/client/homepagecontroller.dart';
 import '../../../../widget/home/nomet prenomcontainer.dart';
+import '../../../../widget/home/verticalcontainer.dart';
 
 class HomeTechPage extends StatelessWidget {
-  const HomeTechPage({Key? key}) : super(key: key);
+   HomeTechPage({Key? key}) : super(key: key);
+  HomePageTechControllerImp controller = Get.put(HomePageTechControllerImp());
+  HomePageControllerImp controller2 = Get.put(HomePageControllerImp());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       
-      body: Column(
-        children: [
-          NomEtPrenomContainer(),
-          SizedBox(height: 40,),
-          Text("Consulter Vos rendez-Vous", style: TextStyle(fontSize: 20 , fontFamily: "Comfortaa" , fontWeight: FontWeight.w900),),
-          SizedBox(height: 20),
-          Calendrier(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            NomEtPrenomContainer(),
+            SizedBox(height: 40,),
+            InkWell(
+              child: VerticalContainer(image: "assets/images/rendez-vous.png", text: "Consulter Vos rendez-vous"),
+                onTap: (){
+                  controller.gotorendezvous();
+                },
+            ),
+            InkWell(child: VerticalContainer(image: "assets/images/venach.png", text: "Cherchez-vous des pièces de rechange ? \n Avez-vous des pièces de rechange à vendre?"),onTap: (){controller2.goToVenteAchat();}),
+          ],
+        ),
       ),
     );
   }

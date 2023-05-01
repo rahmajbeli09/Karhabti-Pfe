@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       translations : MyTranslation(),
       debugShowCheckedModeBanner: false,
       locale: controller.language,
-      home:  PageOne(),
+      home:  HomeTechScreen(),
       getPages: routes
     );
   }
