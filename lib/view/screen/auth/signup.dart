@@ -35,25 +35,25 @@ class SignUp extends StatelessWidget {
           CustomTextBodyAuth(text: "21".tr),
         SizedBox(height: 15,),
           CustomTextFormAuth(
-             valid:(val){
-                return ValidInput(val!, 8,30, "username");
-            },
+             //valid:(val){
+             //   return ValidInput(val!, 8,30, "username");
+           // },
           mycontroller: controller.username,
           hinttext: "22".tr,
           iconData: Icons.person_outline,
          ),
           CustomTextFormAuth(
-             valid:(val){
-              return ValidInput(val!, 8,30, "email");
-            },
+           //  valid:(val){
+            //  return ValidInput(val!, 8,30, "email");
+           // },
           mycontroller: controller.email,
           hinttext: "16".tr,
           iconData: Icons.email_outlined,
          ),
           CustomTextFormAuth(
-             valid:(val){
-               return ValidInput(val!, 8,30, "phone");
-            },
+            // valid:(val){
+               //return ValidInput(val!, 8,30, "phone");
+            //},
           mycontroller: controller.phone,
           hinttext: "23".tr,
           iconData: Icons.phone_outlined,
@@ -64,9 +64,9 @@ class SignUp extends StatelessWidget {
                             onTapIcon:(){
                               controller.showPassword();
                             } ,
-                              valid:(val){
-                               return ValidInput(val!, 8,30, "password");
-                             },
+                              //valid:(val){
+                               //return ValidInput(val!, 8,30, "password");
+                            // },
                            mycontroller: controller.password,
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,
@@ -77,9 +77,9 @@ class SignUp extends StatelessWidget {
                             onTapIcon:(){
                               controller.showPassword();
                             } ,
-                              valid:(val){
-                               return ValidInput(val!, 8,30, "password");
-                             },
+                             // valid:(val){
+                              // return ValidInput(val!, 8,30, "password");
+                           //  },
                            mycontroller: controller.password2,
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,

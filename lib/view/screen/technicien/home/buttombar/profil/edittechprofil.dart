@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../widget/boutton.dart';
 
-class UserProfilePage extends StatelessWidget {
+class EditTechProfil extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _telController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

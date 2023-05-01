@@ -4,7 +4,7 @@ import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/history.dart'
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/messages.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/notification.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/profil.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/homepage.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/homepage.dart';
 
 
 abstract class HomeScreenController extends GetxController{

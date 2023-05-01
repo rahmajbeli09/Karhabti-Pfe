@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/controller/client/rendezvouscontroller.dart';
-import 'package:karhabti_pfe/core/constant/routes.dart';
+import 'package:karhabti_pfe/controller/technicien/profiltechcontroller.dart';
 import 'package:karhabti_pfe/view/widget/home/nomet%20prenomcontainer.dart';
 import 'package:karhabti_pfe/view/widget/home/profilcontainer.dart';
 
-
 // ignore: must_be_immutable
-class Profil extends StatelessWidget {
-   Profil({Key? key}) : super(key: key);
-  RendezVousControllerImp controller = Get.put(RendezVousControllerImp());
-
+class ProfilTech extends StatelessWidget {
+   ProfilTech({Key? key}) : super(key: key);
+    ProfilTechControllerImp controller = Get.put(ProfilTechControllerImp());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +22,15 @@ class Profil extends StatelessWidget {
                 Titre: "  Information Personnelle", 
                 text: "Modifier vos informations personnelles et verfifer votre compte.",
                 onTap: (){
-                  Get.toNamed(AppRoute.edit);
+                  controller.gotoEditTechProfil();
                 },
                 ),
-                ProfilContainer(
-                icon: Icons.calendar_month, 
-                Titre: "  Mes rendez-vous", 
-                text: "Organisez votre emploi du temps en consultant vos rendez-vous prévus.",
+                 ProfilContainer(
+                icon: Icons.garage, 
+                Titre: "  Mon adresee", 
+                text: "Ajouter ou Modifier votre adresse",
                 onTap: (){
-                  controller.goToRendezVous();
+                  controller.goToAddress();
                 },
                 ),
                 ProfilContainer(
@@ -44,7 +41,6 @@ class Profil extends StatelessWidget {
                   controller.goToAnnonces();
                 },
                 ),
-
                 Container(
                   margin: EdgeInsets.only(left: 250),
                   child: Row(children: [

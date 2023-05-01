@@ -63,7 +63,7 @@ class SignUpTechControllerImp extends SignUpTechController{
   
   @override
   goToHomePage() {
-    Get.offAllNamed(AppRoute.hometech);
+    Get.offAllNamed(AppRoute.homescreentech);
   }
   void updateSelectedOption(String newOption) {
     

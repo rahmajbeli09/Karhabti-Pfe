@@ -16,8 +16,12 @@ class AppRoute{
   static const String post = "/post";
   static const String edit = "/edit";
   static const String map = "/map";
+  static const String maptech = "/maptech";
   static const String rendezvous = "/rendezvous";
   static const String annonces = "/annonces";
+  static const String homescreentech = "/homescreentech";
+  static const String edittechprofil = "/edittechprofil";
+  static const String adresse = "/adresse";
 
 
 

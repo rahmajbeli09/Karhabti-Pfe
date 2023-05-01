@@ -3,12 +3,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
-class MapPage extends StatefulWidget {
+class MapTech extends StatefulWidget {
   @override
-  State<MapPage> createState() => _MapPageState();
+  State<MapTech> createState() => _MapTechState();
 }
 
-class _MapPageState extends State<MapPage> {
+class _MapTechState extends State<MapTech> {
 
   Position?cl;
   CameraPosition? _kGooglePlex;
@@ -17,7 +17,6 @@ class _MapPageState extends State<MapPage> {
    Future<void> getpos() async {
     await Geolocator.checkPermission();
     await Geolocator.requestPermission();
-
   cl= await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
         _kGooglePlex = CameraPosition(

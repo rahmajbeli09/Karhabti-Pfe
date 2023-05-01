@@ -30,31 +30,32 @@ class SignUpTech extends StatelessWidget {
                   key: controller.formstate,
                     child: ListView(
                       children: [
+         Image.asset("assets/images/signup.png" , height: 170, width: 50, alignment: Alignment.topLeft,),
           CustomTextTiltleFormAuth(text :"20".tr),
          const SizedBox(height: 20,),
           CustomTextBodyAuth(text: "21".tr),
-         const SizedBox(height: 60,),
-        
+         const SizedBox(height: 20,),
+    
           CustomTextFormAuth(
-             valid:(val){
-                return ValidInput(val!, 8,30, "username");
-            },
+             //valid:(val){
+              //  return ValidInput(val!, 8,30, "username");
+           // },
           mycontroller: controller.username,
           hinttext: "22".tr,
           iconData: Icons.person_outline,
          ),
           CustomTextFormAuth(
-             valid:(val){
-              return ValidInput(val!, 8,30, "email");
-            },
+             //valid:(val){
+             // return ValidInput(val!, 8,30, "email");
+           // },
           mycontroller: controller.email,
           hinttext: "16".tr,
           iconData: Icons.email_outlined,
          ),
           CustomTextFormAuth(
-             valid:(val){
-               return ValidInput(val!, 8,30, "phone");
-            },
+          //   valid:(val){
+          //     return ValidInput(val!, 8,30, "phone");
+           // },
           mycontroller: controller.phone,
           hinttext: "23".tr,
           iconData: Icons.phone_outlined,
@@ -65,9 +66,9 @@ class SignUpTech extends StatelessWidget {
                             onTapIcon:(){
                               controller.showPassword();
                             } ,
-                              valid:(val){
-                               return ValidInput(val!, 8,30, "password");
-                             },
+                              //valid:(val){
+                              // return ValidInput(val!, 8,30, "password");
+                             //},
                            mycontroller: controller.password,
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,
@@ -78,9 +79,9 @@ class SignUpTech extends StatelessWidget {
                             onTapIcon:(){
                               controller.showPassword();
                             } ,
-                              valid:(val){
-                               return ValidInput(val!, 8,30, "password");
-                             },
+                              //valid:(val){
+                              // return ValidInput(val!, 8,30, "password");
+                            // },
                            mycontroller: controller.password2,
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,
@@ -102,12 +103,12 @@ class SignUpTech extends StatelessWidget {
                         'mécanicien',
                         'electricien',
                         'tolier',
+                        'lavage',
                         'technicien en pneumatique',
                         'technicien en vitrage',
                         'technicien en climatisation',
                       ].map((String value) {
                         return DropdownMenuItem<String>(
-                          
                           value: value,
                           child: Text(value , style: TextStyle(fontFamily: "Comfortaa" , fontWeight: FontWeight.w600  ) ),
                         );

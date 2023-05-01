@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/map.dart';
 import 'package:karhabti_pfe/view/widget/boutton.dart';
-import '../../../../controller/client/locationcontroller.dart';
+import '../../../../../../controller/client/locationcontroller.dart';
+import 'maptech.dart';
 
 // ignore: must_be_immutable
-class Localisezvous extends StatelessWidget {
-   Localisezvous({Key? key}) : super(key: key);
+class Adresse extends StatelessWidget {
+   Adresse({Key? key}) : super(key: key);
     Location_ControllerImp controller = Get.put(Location_ControllerImp());
     double ?x;
     double ?y;
@@ -32,7 +32,7 @@ class Localisezvous extends StatelessWidget {
     },
   ),
   centerTitle: true,
-  title: Text('Trouver un expert' , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
+  title: Text('Enregistrer votre locale' , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
   elevation: 0,
   backgroundColor: Colors.white.withAlpha(0),
 ),
@@ -42,14 +42,13 @@ class Localisezvous extends StatelessWidget {
           children: [
             Image.asset("assets/images/loc.png" , height: 300,),
               SizedBox(height: 50,),
-              Text(" Merci de determiner votre position" , style: TextStyle(fontSize: 19 , fontFamily: "comfortaa" , fontWeight: FontWeight.w800),textAlign: TextAlign.center,),
+              Text(" Merci de determiner votre adresse" , style: TextStyle(fontSize: 19 , fontFamily: "comfortaa" , fontWeight: FontWeight.w800),textAlign: TextAlign.center,),
               SizedBox(height: 20,),
-              Text( "Cliquez sur le bouton 'Localisez-vous' pour accéder à une liste de techniciens qualifiés se trouvant à proximité de votre position." , style: TextStyle(fontSize: 13 , fontFamily: "comfortaa" , fontWeight: FontWeight.w600),textAlign: TextAlign.center,),
+              Text( "Cliquez sur le bouton 'Localisez-vous' pour avoir des clients qui ont besoin de votre aide se trouvant à proximité de votre position." , style: TextStyle(fontSize: 13 , fontFamily: "comfortaa" , fontWeight: FontWeight.w600),textAlign: TextAlign.center,),
               SizedBox(height: 80,),
               Boutton(text: "Localisez-Vous" , onPressed: ()async{
-
                 controller.getLocation();
-               await Get.to(MapPage());
+               await Get.to(MapTech());
               },
               color: Color.fromARGB(255, 255, 203, 30),)
           ],

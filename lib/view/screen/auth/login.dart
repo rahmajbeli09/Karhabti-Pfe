@@ -20,7 +20,7 @@ class Login extends StatelessWidget {
                   onWillPop: alertExitApp,
                   child:  Container(
                   width: 500,
-        padding: EdgeInsets.symmetric(vertical: 60),
+        padding: EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
     image: DecorationImage(
       image: AssetImage("assets/images/background.jpeg" ),
@@ -33,6 +33,7 @@ class Login extends StatelessWidget {
                       key: controller.formstate,
                       child: ListView(
                         children: [
+                          SizedBox(height: 20,),
                           Image.asset("assets/images/signup2.png" , height: 150, width: 160,),
                           SizedBox(height: 10,),
                            CustomTextTiltleFormAuth(text :"14".tr),
@@ -40,9 +41,9 @@ class Login extends StatelessWidget {
                            CustomTextBodyAuth(text: "15".tr),
                           const SizedBox(height: 100,),
                            CustomTextFormAuth(
-                             valid:(val){
-                               return ValidInput(val!, 8,30, "email");
-                             },
+                           //  valid:(val){
+                            //   return ValidInput(val!, 8,30, "email");
+                            // },
                            mycontroller: controller.email,
                            hinttext: "16".tr,
                            iconData: Icons.email_outlined,
@@ -53,9 +54,9 @@ class Login extends StatelessWidget {
                             onTapIcon:(){
                               controller.showPassword();
                             } ,
-                              valid:(val){
-                               return ValidInput(val!, 8,30, "password");
-                             },
+                             // valid:(val){
+                              // return ValidInput(val!, 8,30, "password");
+                            // },
                            mycontroller: controller.password,
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,

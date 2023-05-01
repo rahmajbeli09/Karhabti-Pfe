@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:karhabti_pfe/view/widget/boutton.dart';
 
 import '../../../controller/technicien/signuporlogin2controller.dart';
 
@@ -38,22 +39,20 @@ class SignUpOrLogin2 extends StatelessWidget {
                     Text("Connectez-vous si vous avez de compte \n ou inscrivez-vous pour nous rejoindre ",
                     style: TextStyle(fontWeight: FontWeight.w700 , fontSize: 15),
                     ),
-                    SizedBox(height: 100,),
-                     Container(
-                      padding: EdgeInsets.symmetric(),
-                      margin: EdgeInsets.symmetric(horizontal:35),
-                       child: Row(
-                        children: [
-                          MaterialButton(onPressed: (){
-                            controller.goToLogin();
-                          } , child: Text("13".tr , style: TextStyle(fontFamily: "Comfortaa",),), color: Colors.white, textColor: Colors.black,padding: EdgeInsets.symmetric(horizontal: 20 , vertical: 18),),
-                          Spacer(),
-                          MaterialButton(onPressed: (){
-                            controller.goToSignUp();
-                          } , child: Text("14".tr , style: TextStyle(fontFamily: "Comfortaa",),),color: Colors.white,textColor: Colors.black, padding: EdgeInsets.symmetric(horizontal: 22 , vertical: 18),)
-                        ],
-                ),
-        ),
+                    SizedBox(height: 35),
+                     Boutton(
+                      text: "Connectez-Vous",
+                      color: Colors.white,
+                      onPressed: (){
+                        controller.goToLogin();
+                      },
+                      ),
+                      Boutton(text: "Inscrivez-Vous", 
+                      color: Colors.white,
+                      onPressed: (){
+                      controller.goToSignUp();
+                      },
+                      ),
                    ],
                  )),
       ));

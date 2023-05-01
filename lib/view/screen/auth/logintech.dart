@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/function/alertexitapp.dart';
-import 'package:karhabti_pfe/core/function/validinput.dart';
 import 'package:karhabti_pfe/view/widget/auth/customtextbodyauth.dart';
 import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
 import 'package:karhabti_pfe/view/widget/auth/textsignuporsignin.dart';
@@ -26,23 +25,21 @@ class LoginTech extends StatelessWidget {
     ),
   ),
                    child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 35),
-                    margin: EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 35),
                     child: Form(
-                      key: controller.formstate,
+                      //: controller.formstate,
                       child: ListView(
                         children: [
-                           CustomTextTiltleFormAuth(text :"14".tr),
-                          const SizedBox(height: 20,),
+                           Image.asset("assets/images/signup2.png" , height: 150, width: 160,),                           CustomTextTiltleFormAuth(text :"14".tr),
                            CustomTextBodyAuth(text: "15".tr),
-                          const SizedBox(height: 145,),
+                          const SizedBox(height: 75,),
                            CustomTextFormAuth(
-                             valid:(val){
-                               return ValidInput(val!, 8,30, "email");
-                             },
+                            // valid:(val){
+                              // return ValidInput(val!, 8,30, "email");
+                            // },
                            mycontroller: controller.email,
                            hinttext: "16".tr,
-                           iconData: Icons.email_outlined,
+                           iconData: Icons.email_outlined, 
                           ),
                            GetBuilder<LoginTechControllerImp>
                            (builder: (controller) => CustomTextFormAuth(
@@ -50,15 +47,15 @@ class LoginTech extends StatelessWidget {
                             onTapIcon:(){
                               controller.showPassword();
                             } ,
-                              valid:(val){
-                               return ValidInput(val!, 8,30, "password");
-                             },
+                              //valid:(val){
+                               //return ValidInput(val!, 8,30, "password");
+                             //},
                            mycontroller: controller.password,
                            hinttext: "17".tr,
-                           iconData: Icons.lock_outlined ,
+                           iconData: Icons.lock_outlined,
                           ),),
                            Text("18".tr , textAlign: TextAlign.end, style: TextStyle(fontSize: 12 ,  decoration: TextDecoration.underline),),
-                      const SizedBox(height: 50,),
+                      const SizedBox(height: 30,),
                       CustomTextSignUpOrSignIn(
                       texttwo: "14".tr,textone: "19".tr, 
                       onTap: (){
