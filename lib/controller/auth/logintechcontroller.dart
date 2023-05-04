@@ -10,7 +10,7 @@ abstract class LoginTechController extends GetxController{
 
 class LoginTechControllerImp extends LoginTechController{
   
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+ // GlobalKey<FormState> formstate = GlobalKey<FormState>();
   
   late TextEditingController email ; 
   late TextEditingController password ; 
@@ -21,13 +21,13 @@ class LoginTechControllerImp extends LoginTechController{
    }
 
   login(){
-    var formdata = formstate.currentState;
-    if (formdata!.validate()){
-        print("valid");
-    }else{
-      print("not Valid");
-    }
-    Get.offAllNamed(AppRoute.hometech);
+    //var formdata = formstate.currentState;
+    //if (formdata!.validate()){
+       // print("valid");
+   // }else{
+     // print("not Valid");
+  //  }
+    Get.offAllNamed(AppRoute.homescreentech);
 
   }
   

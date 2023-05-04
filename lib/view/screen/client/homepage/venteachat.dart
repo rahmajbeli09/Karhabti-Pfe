@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../controller/client/ventachcontroller.dart';
+import '../../../../../controller/client/ventachcontroller.dart';
 
 
 // ignore: must_be_immutable
@@ -48,7 +48,7 @@ class VenteAchat extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(right: 320 , top: 10),
+            margin: EdgeInsets.only(left: 280 , top: 500),
             decoration: BoxDecoration(
             color:Color.fromARGB(255, 255, 203, 30),
               borderRadius: BorderRadius.circular(50),

@@ -4,12 +4,10 @@ import 'package:karhabti_pfe/core/constant/routes.dart';
 import 'package:karhabti_pfe/repository/user_repository/user_repository.dart';
 import 'package:karhabti_pfe/services/user_model.dart';
 import 'package:karhabti_pfe/view/screen/auth/login.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/homepage.dart';
-
+import 'package:karhabti_pfe/view/screen/client/homepage/homescreen.dart';
 import 'package:karhabti_pfe/view/screen/pageone.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../repository/user_repository/exceptions/signup_email_pwd_failure.dart';
 import '../../repository/user_repository/tech_repository.dart';
 import '../../services/tech_model.dart';
@@ -32,13 +30,13 @@ if (user==null){
   print("login page");
   Get.offAll(()=>PageOne()); 
 }else{
-  Get.offAll(()=>HomePage());
+  Get.offAll(()=>HomeScreen());
 }
  }
   void register(String email , password)async{
     try{
      await auth.createUserWithEmailAndPassword(email: email, password: password);
-  _user.value!=null? Get.offAll(()=>PageOne()) : Get.offAll(()=>HomePage()); //Homescreen
+  _user.value!=null? Get.offAll(()=>PageOne()) : Get.offAll(()=>HomeScreen()); //Homescreen
     }on FirebaseAuthException catch(e){
 final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
 print('FIREBASE AUTH EXCEPTION - ${ex.message}');

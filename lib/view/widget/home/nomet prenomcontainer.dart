@@ -25,7 +25,7 @@ class NomEtPrenomContainer extends StatelessWidget {
                         ),
           ),
           Positioned(
-            top: Get.width/6.5,
+            top: Get.width/10.5,
             child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(

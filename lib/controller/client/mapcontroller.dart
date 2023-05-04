@@ -1,45 +1,43 @@
+import 'dart:async';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapController extends GetxController {
-  late GoogleMapController _mapController;
-  Rx<Position?> currentLocation = Rx<Position?>(null);
+  Position? ab;
+  CameraPosition? kGooglePlex;
+  Set<Marker> mymarker = {};
+
+  Future<void> getpos() async {
+    await Geolocator.checkPermission();
+    await Geolocator.requestPermission();
+
+    ab = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    kGooglePlex = CameraPosition(
+      target: LatLng(ab!.latitude, ab!.longitude),
+      zoom: 17.4746,
+    );
+  }
+
+  Future<void> chang() async {
+    mymarker.remove(Marker(markerId: MarkerId("1")));
+    await mymarker.add(Marker(
+      markerId: MarkerId("1"),
+      position: LatLng(ab!.latitude, ab!.longitude),
+    ));
+  }
 
   @override
   void onInit() {
+    getpos();
     super.onInit();
-    getCurrentLocation();
   }
 
-  void getCurrentLocation() async {
-  Position position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high);
-  currentLocation.value = position;
-  
-  // Ajoutez cette vérification pour vous assurer que _mapController est initialisé
-  if (_mapController != null) {
-    animateCameraToCurrentLocation();
-  }
-}
-  void animateCameraToCurrentLocation() {
-    if (_mapController != null && currentLocation.value != null) {
-      _mapController.animateCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(
-            target: LatLng(
-              currentLocation.value!.latitude,
-              currentLocation.value!.longitude,
-            ),
-            zoom: 14.0,
-          ),
-        ),
-      );
-    }
-  }
-
-  void onMapCreated(GoogleMapController controller) {
-    _mapController = controller;
-    animateCameraToCurrentLocation();
+  @override
+  void onReady() {
+    super.onReady();
   }
 }

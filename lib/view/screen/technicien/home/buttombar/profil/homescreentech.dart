@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/view/widget/home/custombottombar.dart';
 
-import '../../../../controller/client/homescreencontroller.dart';
+import '../../../../../../controller/client/homescreencontroller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

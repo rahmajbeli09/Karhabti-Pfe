@@ -18,7 +18,7 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
    SignUp({Key? key}) : super(key: key); //The constructor takes a Key parameter and passes it to the superclass constructor. The key parameter is optional and allows for the widget's identity to be preserved across widget rebuilds.
  SignUpControllerImp controller = Get.put(SignUpControllerImp()); //This method is part of the GetX package and registers a new instance of the SignUpControllerImp class to be globally accessible within the widget tree.
  AuthController controller2 =Get.put(AuthController());
- final key = GlobalKey<FormState>(); //The key variable is defined to hold a global key that is used to identify this widget in the widget tree.
+ //final key = GlobalKey<FormState>(); //The key variable is defined to hold a global key that is used to identify this widget in the widget tree.
   @override
   Widget build(BuildContext context) { //The build method is overridden to create the UI of the sign-up screen. It returns a Scaffold widget with an AppBar and a Container containing the sign-up form
    var email = TextEditingController();
@@ -48,30 +48,27 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
           CustomTextTiltleFormAuth(text :"20".tr),
          const SizedBox(height: 10,),
           CustomTextBodyAuth(text: "21".tr),
-         const SizedBox(height: 60,),
-        
-          CustomTextFormAuth( 
-            //The CustomTextFormAuth widget is used to create input fields for the user to enter their username, email, phone number, and password. It accepts various parameters, such as valid, which is a callback function that validates the input based on certain criteria, mycontroller, which is an instance of the TextEditingController class used to control the input field's text, hinttext, which is the placeholder text for the input field, and iconData, which is the icon displayed next to the input field.
-            
-             valid:(val){
-                return ValidInput(val!, 8,30, "username");
-            },
+        SizedBox(height: 15,),
+          CustomTextFormAuth(
+             //valid:(val){
+             //   return ValidInput(val!, 8,30, "username");
+           // },
           mycontroller: controller.username,
           hinttext: "22".tr,
           iconData: Icons.person_outline,
          ),
           CustomTextFormAuth(
-             valid:(val){
-              return ValidInput(val!, 8,30, "email");
-            },
+           //  valid:(val){
+            //  return ValidInput(val!, 8,30, "email");
+           // },
           mycontroller: controller.email,
           hinttext: "16".tr,
           iconData: Icons.email_outlined,
          ),
           CustomTextFormAuth(
-             valid:(val){
-               return ValidInput(val!, 8,30, "phone");
-            },
+            // valid:(val){
+               //return ValidInput(val!, 8,30, "phone");
+            //},
           mycontroller: controller.phone,
           hinttext: "23".tr,
           iconData: Icons.phone_outlined,
@@ -82,9 +79,9 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
                             onTapIcon:(){
                               controller.showPassword();
                             } ,
-                              valid:(val){
-                               return ValidInput(val!, 8,30, "password");
-                             },
+                              //valid:(val){
+                               //return ValidInput(val!, 8,30, "password");
+                            // },
                            mycontroller: controller.password,
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,
@@ -95,9 +92,9 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
                             onTapIcon:(){
                               controller.showPassword();
                             } ,
-                              valid:(val){
-                               return ValidInput(val!, 8,30, "password");
-                             },
+                             // valid:(val){
+                              // return ValidInput(val!, 8,30, "password");
+                           //  },
                            mycontroller: controller.password2,
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,

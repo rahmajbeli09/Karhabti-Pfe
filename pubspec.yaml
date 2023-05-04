@@ -98,6 +98,7 @@ dependencies:
   dotted_border: ^2.0.0+1
   open_street_map_search_and_pick: ^0.0.12
   http_status_code: ^0.0.2
+  flutter_calendar_carousel: ^2.4.1
   
 dev_dependencies:
   flutter_test:
@@ -160,6 +161,9 @@ flutter:
     - assets/images/post.png
     - assets/images/google.png
     - assets/images/facebook.png
+    - assets/images/rendez-vous.png
+    - assets/images/annonce.png
+    - assets/images/batterie.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

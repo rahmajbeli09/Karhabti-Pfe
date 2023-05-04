@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:karhabti_pfe/view/widget/home/horizontalcontainer.dart';
 import 'package:karhabti_pfe/view/widget/home/nomet%20prenomcontainer.dart';
 import 'package:karhabti_pfe/view/widget/home/verticalcontainer.dart';
-import '../../../../controller/client/homepagecontroller.dart';
+import '../../../../../controller/client/homepagecontroller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

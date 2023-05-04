@@ -4,7 +4,6 @@ class CustomTextFormAuth extends StatelessWidget {
   final String hinttext;
   final IconData iconData;
   final TextEditingController? mycontroller;
-  final String? Function(String?) valid;
   final bool? obscureText ;
   final void Function()? onTapIcon;
   const CustomTextFormAuth(
@@ -13,7 +12,6 @@ class CustomTextFormAuth extends StatelessWidget {
       required this.hinttext,
       required this.iconData,
       required this.mycontroller,
-      required this.valid,
        this.obscureText,})
       : super(key: key);
 
@@ -22,7 +20,6 @@ class CustomTextFormAuth extends StatelessWidget {
     return  Container(
         margin:const  EdgeInsets.only(bottom: 15),
         child: TextFormField(
-          validator: valid,
           controller: mycontroller,
           obscureText: obscureText == null || obscureText == false ? false : true,
           decoration: InputDecoration(

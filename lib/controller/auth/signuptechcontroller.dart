@@ -29,12 +29,13 @@ class SignUpTechControllerImp extends SignUpTechController{
    
 
   SignUp(){
-    var formdata = formstate.currentState;
-    if (formdata!.validate()){
-        print("valid");
-    }else{
-      print("not Valid");
-    }
+    //var formdata = formstate.currentState;
+    //if (formdata!.validate()){
+      //  print("valid");
+   // }else{
+     // print("not Valid");
+    //}
+    Get.offAllNamed(AppRoute.homescreentech);
   }
   
   @override
@@ -63,7 +64,7 @@ class SignUpTechControllerImp extends SignUpTechController{
   
   @override
   goToHomePage() {
-    Get.offAllNamed(AppRoute.hometech);
+    Get.offAllNamed(AppRoute.homescreentech);
   }
   void updateSelectedOption(String newOption) {
     

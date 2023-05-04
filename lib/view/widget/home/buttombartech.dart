@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/controller/client/homepagecontroller.dart';
+import '../../../controller/technicien/homepagetechcontroller.dart';
 
 // ignore: must_be_immutable
-class ButtomBar extends StatelessWidget {
+class ButtomBarTech extends StatelessWidget {
  final Function()? onPressed;
  final IconData icon ; 
  final bool? active ;
  final String text ; 
-    ButtomBar(
+    ButtomBarTech(
     {Key? key,
     required this.onPressed,
     required this.active, 
     required this.icon,
     required this.text })
      : super(key: key);
-    HomePageControllerImp controller = Get.put(HomePageControllerImp());
+    HomePageTechControllerImp controller = Get.put(HomePageTechControllerImp());
 
   @override
   Widget build(BuildContext context) {

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/view/widget/home/custombottombar.dart';
+import '../../../../controller/technicien/homescreentechcontroller.dart';
+import '../../../widget/home/custombuttombartech.dart';
 
-import '../../../../controller/client/homescreencontroller.dart';
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeTechScreen extends StatelessWidget {
+  const HomeTechScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeScreenControllerImp());
-    return  GetBuilder<HomeScreenControllerImp>
+    Get.put(HomeScreenTechControllerImp());
+    return  GetBuilder<HomeScreenTechControllerImp>
     (builder: (controller) =>
     Scaffold(
       floatingActionButton:  FloatingActionButton(
@@ -21,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         child: Icon(Icons.notifications ,) ,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar:CustomBottomBar(),
+        bottomNavigationBar:CustomBottomBarTech(),
      body: controller.listPage.elementAt(controller.currentPage),),
      );
   }
