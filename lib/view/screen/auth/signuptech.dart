@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/function/alertexitapp.dart';
+import 'package:karhabti_pfe/services/tech_model.dart';
 import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
+import '../../../controller/auth/authcontroller.dart';
 import '../../../controller/auth/signuptechcontroller.dart';
 import '../../../core/function/validinput.dart';
+import '../../../services/user_model.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
@@ -120,6 +123,8 @@ class SignUpTech extends StatelessWidget {
          ),
          SizedBox(height: 20,),
               CustomButtomAuth(text: "14".tr, onPressed :() {
+                  AuthController.instance.register(controller.email.text.trim(), controller.password.text.trim());
+
                 controller.SignUp();
                 controller.goToHomePage();
               }),

@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/auth/logincontroller.dart';
 import 'package:karhabti_pfe/core/function/alertexitapp.dart';
 import 'package:karhabti_pfe/core/function/validinput.dart';
-import 'package:karhabti_pfe/services/auth.dart';
 import 'package:karhabti_pfe/view/widget/auth/customtextbodyauth.dart';
 import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
 import 'package:karhabti_pfe/view/widget/auth/textsignuporsignin.dart';
 
+import '../../../controller/auth/authcontroller.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
@@ -32,6 +32,7 @@ class Login extends StatelessWidget {
       fit: BoxFit.fitHeight,
     ),
   ),
+
                    child: Container(
                     padding: const EdgeInsets.symmetric( horizontal: 25 ),
                     child: Form(
@@ -73,7 +74,7 @@ class Login extends StatelessWidget {
                         controller.goToSignUp();
                       },),
                        CustomButtomAuth(text: "13".tr, onPressed :() {
-                        
+                         AuthController.instance.login(controller.email.text.trim(), controller.password.text.trim());
                         controller.login();
 
                        

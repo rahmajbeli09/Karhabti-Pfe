@@ -10,7 +10,6 @@ import 'package:karhabti_pfe/view/screen/client/homepage/homepage.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/homescreen.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/localisation.dart';
 import 'package:karhabti_pfe/view/screen/pageone.dart';
-import 'package:karhabti_pfe/view/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
@@ -20,16 +19,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 import 'view/screen/client/homepage/map.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => Get.put(AuthController()));
 
-  try {
-    await Firebase.initializeApp().then((value) => Get.put(AuthController()));
-  } catch (e) {
-    print('Error initializing Firebase: $e');
-  }
    await initialServices();
   runApp( MyApp());
 }

@@ -5,6 +5,7 @@ import 'package:karhabti_pfe/core/function/validinput.dart';
 import 'package:karhabti_pfe/view/widget/auth/customtextbodyauth.dart';
 import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
 import 'package:karhabti_pfe/view/widget/auth/textsignuporsignin.dart';
+import '../../../controller/auth/authcontroller.dart';
 import '../../../controller/auth/logintechcontroller.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextformauth.dart';
@@ -65,6 +66,7 @@ class LoginTech extends StatelessWidget {
                         controller.goToSignUp();
                       },),
                        CustomButtomAuth(text: "13".tr, onPressed :() {
+                         AuthController.instance.login(controller.email.text.trim(), controller.password.text.trim());
                         controller.login();
                        }),
                        SocialMedia()
