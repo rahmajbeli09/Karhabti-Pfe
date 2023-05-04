@@ -10,9 +10,8 @@ class CustomTextTiltleFormAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
             text,
-            textAlign: TextAlign.left,
+            textAlign: TextAlign.center,
             style: ThemeStyle.headline1,
-            
           );
   }
 }

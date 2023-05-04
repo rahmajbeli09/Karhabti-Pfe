@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
 
 abstract class SignUpController extends GetxController{
+  var isBlur = false.obs;
+
   SignUp();
-  goToSignUp();
+  
   goToHomePage();
 }
 
@@ -16,6 +18,12 @@ class SignUpControllerImp extends SignUpController{
   late TextEditingController phone ; 
   late TextEditingController email ; 
   late TextEditingController password ; 
+  late TextEditingController password2 ; 
+  bool isshowpassword = true ;
+   showPassword(){
+    isshowpassword = isshowpassword == true ?false : true;
+    update();
+   }
    
 
   SignUp(){
@@ -24,18 +32,17 @@ class SignUpControllerImp extends SignUpController{
         print("valid");
     }else{
       print("not Valid");
-    }
+    }Get.toNamed(AppRoute.signup);
+    
   }
   
-  @override
-  goToSignUp() {
-    Get.toNamed(AppRoute.signup);
-  }
+
 
   @override
   void onInit() {
     email = TextEditingController();
     password = TextEditingController();
+    password2 = TextEditingController();
     phone = TextEditingController();
     username = TextEditingController();
     super.onInit();
@@ -44,6 +51,7 @@ class SignUpControllerImp extends SignUpController{
   void dispose() {
     email.dispose();
     password.dispose();
+    password2.dispose();
     username.dispose();
     phone.dispose();
     super.dispose();
@@ -51,6 +59,6 @@ class SignUpControllerImp extends SignUpController{
   
   @override
   goToHomePage() {
-    Get.toNamed(AppRoute.home);
+    Get.offAllNamed(AppRoute.homescreen);
   }
 }

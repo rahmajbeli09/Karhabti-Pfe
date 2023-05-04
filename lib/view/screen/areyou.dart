@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/view/widget/auth/custombuttonauth.dart';
-
+import 'package:karhabti_pfe/view/widget/boutton.dart';
 import '../../controller/areyoucontroller.dart';
 
 class AreYou extends StatelessWidget {
@@ -35,15 +34,21 @@ class AreYou extends StatelessWidget {
                       child: Image.asset("assets/images/logo.png"),
                     ),
                     SizedBox(height: 120,),
-                     Text("Etes-Vous..?", style: TextStyle(fontFamily: "Comfortaa" , fontSize: 20 , fontWeight: FontWeight.w600),),
-                     SizedBox(height: 30,),
-                     CustomButtomAuth(text: "Client",onPressed: (){
-                      controller.goToOnBoarding();
-                     },),
-                     SizedBox(height: 10,),
-                    CustomButtomAuth(text: "Technicien",onPressed: (){
+                     Text("Etes-Vous..?", style: TextStyle(fontFamily: "Comfortaa" , fontSize: 25, fontWeight: FontWeight.w800),),
+                     SizedBox(height: 100,),
+                    Boutton(
+                      text: "Client", 
+                      color: Colors.white , 
+                      onPressed: (){
+                        controller.goToOnBoarding();
+                        }),
+                     SizedBox(height: 5,),
+                    Boutton(
+                      text: "Technicien", 
+                    color: Colors.white , 
+                    onPressed: (){
                       controller.goToOnBoarding2();
-                    },)
+                    })
                    ],
                  )),
       ));

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/auth/logincontroller.dart';
+import 'package:karhabti_pfe/core/function/alertexitapp.dart';
 import 'package:karhabti_pfe/core/function/validinput.dart';
 import 'package:karhabti_pfe/services/auth.dart';
 import 'package:karhabti_pfe/view/widget/auth/customtextbodyauth.dart';
+import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
 import 'package:karhabti_pfe/view/widget/auth/textsignuporsignin.dart';
 
 import '../../widget/auth/custombuttonauth.dart';
@@ -19,7 +21,9 @@ class Login extends StatelessWidget {
    var password = TextEditingController();
   
     return Scaffold(
-                 body: Container(
+                 body:WillPopScope(
+                  onWillPop: alertExitApp,
+                  child:  Container(
                   width: 500,
         padding: EdgeInsets.symmetric(vertical: 60),
           decoration: BoxDecoration(
@@ -29,16 +33,17 @@ class Login extends StatelessWidget {
     ),
   ),
                    child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 35),
-                    margin: EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.symmetric( horizontal: 25 ),
                     child: Form(
                       key: controller.formstate,
                       child: ListView(
                         children: [
+                          Image.asset("assets/images/signup2.png" , height: 150, width: 160,),
+                          SizedBox(height: 10,),
                            CustomTextTiltleFormAuth(text :"14".tr),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 10,),
                            CustomTextBodyAuth(text: "15".tr),
-                          const SizedBox(height: 145,),
+                          const SizedBox(height: 100,),
                            CustomTextFormAuth(
                              valid:(val){
                                return ValidInput(val!, 8,30, "email");
@@ -47,14 +52,19 @@ class Login extends StatelessWidget {
                            hinttext: "16".tr,
                            iconData: Icons.email_outlined,
                           ),
-                           CustomTextFormAuth(
+                           GetBuilder<LoginControllerImp>
+                           (builder: (controller) => CustomTextFormAuth(
+                            obscureText: controller.isshowpassword,
+                            onTapIcon:(){
+                              controller.showPassword();
+                            } ,
                               valid:(val){
                                return ValidInput(val!, 8,30, "password");
                              },
                            mycontroller: controller.password,
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,
-                          ),
+                          ),),
                            Text("18".tr , textAlign: TextAlign.end, style: TextStyle(fontSize: 12 ,  decoration: TextDecoration.underline),),
                       const SizedBox(height: 50,),
                       CustomTextSignUpOrSignIn(
@@ -68,11 +78,13 @@ class Login extends StatelessWidget {
 
                        
                        }),
+                       SocialMedia()
                         ],
                       ),
                     ),
                    ),
                  ),
+                  )
                 );
 
   }

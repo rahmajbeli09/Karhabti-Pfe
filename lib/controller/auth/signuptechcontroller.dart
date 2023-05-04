@@ -17,7 +17,13 @@ class SignUpTechControllerImp extends SignUpTechController{
   late TextEditingController phone ; 
   late TextEditingController email ; 
   late TextEditingController password ; 
+  late TextEditingController password2 ; 
    var selectedOption = "mécanicien".obs;
+    bool isshowpassword = true ;
+   showPassword(){
+    isshowpassword = isshowpassword == true ?false : true;
+    update();
+   }
 
   
    
@@ -40,6 +46,7 @@ class SignUpTechControllerImp extends SignUpTechController{
   void onInit() {
     email = TextEditingController();
     password = TextEditingController();
+    password2 = TextEditingController();
     phone = TextEditingController();
     username = TextEditingController();
     super.onInit();
@@ -48,14 +55,15 @@ class SignUpTechControllerImp extends SignUpTechController{
   void dispose() {
     email.dispose();
     password.dispose();
+    password2.dispose();
     username.dispose();
-    phone.dispose();
+    phone.dispose(); 
     super.dispose();
   }
   
   @override
   goToHomePage() {
-    Get.toNamed(AppRoute.hometech);
+    Get.offAllNamed(AppRoute.hometech);
   }
   void updateSelectedOption(String newOption) {
     

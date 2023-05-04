@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/view/widget/onboarding/technicien/skipbuton2.dart';
-import '../../controller/technicien/onboarding2_controller.dart';
-import '../widget/onboarding/technicien/customslider2.dart';
-import '../widget/onboarding/technicien/cutombuton2.dart';
-import '../widget/onboarding/technicien/dotcontroller2.dart';
+import '../../../controller/technicien/onboarding2_controller.dart';
+import '../../widget/onboarding/technicien/customslider2.dart';
+import '../../widget/onboarding/technicien/cutombuton2.dart';
+import '../../widget/onboarding/technicien/dotcontroller2.dart';
 
 class OnBoarding2 extends StatelessWidget {
   const OnBoarding2({Key? key}) : super(key: key);

@@ -5,9 +5,10 @@ import 'package:karhabti_pfe/controller/auth/authcontroller.dart';
 import 'package:karhabti_pfe/core/services/themeservice.dart';
 import 'package:karhabti_pfe/firebase_options.dart';
 import 'package:karhabti_pfe/routes.dart';
-import 'package:karhabti_pfe/services/auth.dart';
-import 'package:karhabti_pfe/view/screen/home/homepage.dart';
-import 'package:karhabti_pfe/view/screen/onboarding.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/profil.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/homepage.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/homescreen.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/localisation.dart';
 import 'package:karhabti_pfe/view/screen/pageone.dart';
 import 'package:karhabti_pfe/view/wrapper.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,7 @@ import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
+import 'view/screen/client/homepage/map.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -44,9 +46,8 @@ class MyApp extends StatelessWidget {
       theme:ThemeService().lightTheme,
       darkTheme: ThemeService().darkTheme, 
       themeMode: ThemeService().getThemeMode(),
-      home:  OnBoarding(),
-      routes: routes,
-      
+      home:  PageOne(),
+      getPages: routes
     );
   }
 }

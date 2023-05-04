@@ -21,7 +21,7 @@ class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
                        height: 350, 
                        child: Image.asset(onBoardingList[i].image! ,                        )
                      ),
-                      const SizedBox(height: 15,),
+                      const SizedBox(height: 40,),
                     Column(
                       children: [
                         Container(
@@ -30,13 +30,13 @@ class CustomSliderOnBoarding extends GetView<OnBoardingControllerImp> {
                           child: Text
                             (onBoardingList[i].title!,
                              textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 23 , fontWeight: FontWeight.w600 ,fontFamily: "Comfortaa",),
+                            style: TextStyle(fontSize: 23 , fontWeight: FontWeight.w900 ,fontFamily: "Comfortaa",),
                                  
                             ),
                         ),
                       ],
                     ),
-                    const SizedBox(height:10),
+                    const SizedBox(height:20),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text

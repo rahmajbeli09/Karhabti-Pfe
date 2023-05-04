@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:karhabti_pfe/view/widget/boutton.dart';
 
-import '../../controller/technicien/signuporlogin2controller.dart';
+import '../../../controller/client/signuporlogincontroller.dart';
 
-
-class SignUpOrLogin2 extends StatelessWidget {
-  const SignUpOrLogin2({Key? key}) : super(key: key);
+class SignUpOrLogin extends StatelessWidget {
+  const SignUpOrLogin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    SignUpOrLogin2ControllerImp controller = Get.put(SignUpOrLogin2ControllerImp());
+    SignUpOrLoginControllerImp controller = Get.put(SignUpOrLoginControllerImp());
     return Scaffold(
       body:Container(
+        width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 60),
           decoration: BoxDecoration(
     image: DecorationImage(
@@ -32,28 +33,32 @@ class SignUpOrLogin2 extends StatelessWidget {
                       ),
                       child: Image.asset("assets/images/logo.png"),
                     ),
-                                        SizedBox(height: 150,),
+                     SizedBox(height: 120,),
                     Text("Bienvenue" , style: TextStyle(fontSize: 40 , fontFamily: "Comfortaa", fontWeight: FontWeight.w800),),
                     SizedBox(height: 15,),
                     Text("Connectez-vous si vous avez de compte \n ou inscrivez-vous pour nous rejoindre ",
-                    style: TextStyle(fontWeight: FontWeight.w700 , fontSize: 15),
+                    style: TextStyle(fontWeight: FontWeight.w500 , fontSize: 15 , fontFamily: "Comfortaa"),
                     ),
-                    SizedBox(height: 100,),
-                     Container(
-                      padding: EdgeInsets.symmetric(),
-                      margin: EdgeInsets.symmetric(horizontal:35),
-                       child: Row(
-                        children: [
-                          MaterialButton(onPressed: (){
+                    SizedBox(height: 45,),
+                    Column(
+                      children: [
+                        Boutton(
+                        text: "Connectez-Vous", 
+                        color: Colors.white,
+                        onPressed: (){
                             controller.goToLogin();
-                          } , child: Text("13".tr , style: TextStyle(fontFamily: "Comfortaa",),), color: Colors.white, textColor: Colors.black,padding: EdgeInsets.symmetric(horizontal: 20 , vertical: 18),),
-                          Spacer(),
-                          MaterialButton(onPressed: (){
+                          } ,
+                        ),
+                         Boutton(
+                        text: "Inscrivez-Vous", 
+                        color: Colors.white,
+                        onPressed: (){
                             controller.goToSignUp();
-                          } , child: Text("14".tr , style: TextStyle(fontFamily: "Comfortaa",),),color: Colors.white,textColor: Colors.black, padding: EdgeInsets.symmetric(horizontal: 22 , vertical: 18),)
-                        ],
-                ),
-        ),
+                          } ,
+                        ),
+                      ],
+                    ),
+                     
                    ],
                  )),
       ));

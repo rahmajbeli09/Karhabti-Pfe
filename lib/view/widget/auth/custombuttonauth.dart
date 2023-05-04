@@ -17,7 +17,7 @@ class CustomButtomAuth extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
+    return  MaterialButton(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       padding:const EdgeInsets.symmetric(vertical: 10 , horizontal: 70),
       onPressed: onPressed,
