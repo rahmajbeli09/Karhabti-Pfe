@@ -12,18 +12,19 @@ import '../../repository/user_repository/exceptions/signup_email_pwd_failure.dar
 import '../../repository/user_repository/tech_repository.dart';
 import '../../services/tech_model.dart';
 
+
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
-  late Rx<User?> _user;
+  late final Rx<User?> firebaseUser;
   final FirebaseAuth auth = FirebaseAuth.instance;
   final userRepo = Get.put(UserRepository());
   final techRepo = Get.put(TechRepository());
 @override
 void onReady(){
   super.onReady();
- _user =Rx<User?>(auth.currentUser);
- _user.bindStream(auth.userChanges());
- ever(_user, _initialScreen); 
+ firebaseUser =Rx<User?>(auth.currentUser);
+ firebaseUser.bindStream(auth.userChanges());
+ ever(firebaseUser, _initialScreen); 
  }
  _initialScreen(User? user){
 if (user==null){
@@ -35,8 +36,13 @@ if (user==null){
  }
   void register(String email , password)async{
     try{
-     await auth.createUserWithEmailAndPassword(email: email, password: password);
-  _user.value!=null? Get.offAll(()=>PageOne()) : Get.offAll(()=>HomeScreen()); //Homescreen
+  await auth.createUserWithEmailAndPassword(email: email, password: password);
+if (firebaseUser.value != null) {
+  Get.offAll(() => PageOne());
+} else {
+  Get.offAll(() => HomeScreen());
+}
+ //Homescreen
     }on FirebaseAuthException catch(e){
 final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
 print('FIREBASE AUTH EXCEPTION - ${ex.message}');
@@ -76,6 +82,10 @@ await userRepo.createUser(user);
           );
     }
   
+
+  }
+    String? getUserEmail() {
+    return firebaseUser.value?.email;
   }
   void LogOut() async{ //Flutter Firebase App Setup Tutorial & Getx Authentication | Using Email & Password | Part 2 min 39
     await auth.signOut();

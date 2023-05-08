@@ -25,11 +25,11 @@ toJson(){
   };
 }
 //step1 : map user fetched from firebase to usermodel
-factory UserModel.fromSnapshot(DocumentSnapshot<Map<String ,dynamic>> document ){
+factory UserModel.fromSnapshot(DocumentSnapshot<Map<String , dynamic>> document ){
   final data = document.data()!;
   return UserModel(
     id: document.id,
-    email: data["email"],
+    email: data["email"] ,
      fullname: data["fullname"],
       phoneNumber: data["phoneNumber"],
        password: data["password"]);
