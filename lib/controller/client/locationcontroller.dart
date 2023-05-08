@@ -22,7 +22,7 @@ getLocation() async {
   @override
   getpermission()async {
     await Geolocator.checkPermission();
-     await Geolocator.requestPermission();
+    await Geolocator.requestPermission();
   }
 
 }

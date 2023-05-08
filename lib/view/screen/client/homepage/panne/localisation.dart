@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/map.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/panne/map.dart';
 import 'package:karhabti_pfe/view/widget/boutton.dart';
-import '../../../../controller/client/locationcontroller.dart';
+import '../../../../../controller/client/locationcontroller.dart';
 
 // ignore: must_be_immutable
 class Localisezvous extends StatelessWidget {

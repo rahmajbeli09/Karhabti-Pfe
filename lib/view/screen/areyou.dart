@@ -34,7 +34,7 @@ class AreYou extends StatelessWidget {
                       child: Image.asset("assets/images/logo.png"),
                     ),
                     SizedBox(height: 120,),
-                     Text("Etes-Vous..?", style: TextStyle(fontFamily: "Comfortaa" , fontSize: 25, fontWeight: FontWeight.w800),),
+                     Text("Je Suis un/une ..", style: TextStyle(fontFamily: "Comfortaa" , fontSize: 25, fontWeight: FontWeight.w800),),
                      SizedBox(height: 100,),
                     Boutton(
                       text: "Client", 

@@ -156,6 +156,7 @@ class UserProfilePage extends StatelessWidget {
                     color: Color.fromARGB(255, 255, 203, 30),
                     onPressed: () {
                         Get.back();
+                        
                       },
                     ),
                     

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../controller/client/rendezvouscontroller.dart';
 
+// ignore: must_be_immutable
 class Calendrier extends StatelessWidget {
    Calendrier({Key? key}) : super(key: key);
     RendezVousControllerImp controller = Get.put(RendezVousControllerImp());

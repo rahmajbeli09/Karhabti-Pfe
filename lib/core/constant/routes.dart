@@ -23,6 +23,13 @@ class AppRoute{
   static const String edittechprofil = "/edittechprofil";
   static const String adresse = "/adresse";
   static const String rendezvoustech="/rendezvoustech";
+  static const String frais="/frais";
+  static const String liste ="/liste";
+  static const String profillisttech="/profillisttech";
+  static const String messagepanne="/messagepanne";
+  static const String verifycode="/verifycode";
+  static const String forgetPassword="/forgetPassword";
+  static const String resetPassword="/resetPassword";
 
 
 

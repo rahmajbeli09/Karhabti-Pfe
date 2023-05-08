@@ -46,7 +46,7 @@ class Profil extends StatelessWidget {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(left: 250),
+                  margin: EdgeInsets.only(left: 220),
                   child: Row(children: [
                     Text("Déconnexion") , 
                     IconButton(onPressed: (){}, icon: Icon(Icons.logout_outlined)),

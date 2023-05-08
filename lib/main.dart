@@ -2,18 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/routes.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/profil.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/homescreen.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/venteachat.dart';
+import 'package:karhabti_pfe/view/screen/auth/login.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/panne/localisation.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/panne/panne.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/panne/profilelistech.dart';
 import 'package:karhabti_pfe/view/screen/pageone.dart';
-import 'package:karhabti_pfe/view/screen/technicien/home/buttombar/hometechpage.dart';
-import 'package:karhabti_pfe/view/screen/technicien/home/hometechscreen.dart';
-import 'package:karhabti_pfe/view/screen/technicien/signuporlogin2.dart';
+import 'package:karhabti_pfe/view/screen/technicien/home/buttombar/messagetech.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
-import 'view/screen/client/homepage/localisation.dart';
-import 'view/screen/technicien/home/buttombar/profil/profiltech.dart';
+import 'view/screen/auth/resetpassword.dart';
+import 'view/screen/client/homepage/panne/liste.dart';
+import 'view/screen/client/homepage/panne/messagepanne.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
@@ -29,9 +30,9 @@ class MyApp extends StatelessWidget {
       translations : MyTranslation(),
       debugShowCheckedModeBanner: false,
       locale: controller.language,
-      home:  HomeTechScreen(),
+      home:  ResetPassword(),
       getPages: routes
-    );
+    ); 
   }
 }
 

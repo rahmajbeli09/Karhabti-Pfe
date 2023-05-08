@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../widget/home/customtextfieldpost.dart';
-import '../../../widget/home/image.dart';
+import '../../../../widget/home/customtextfieldpost.dart';
+import '../../../../widget/home/image.dart';
 
 class Postulation extends StatelessWidget {
 

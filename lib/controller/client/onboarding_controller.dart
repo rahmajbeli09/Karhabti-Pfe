@@ -22,7 +22,7 @@ class OnBoardingControllerImp extends OnBoardingController{
     if(currentPage> onBoardingList.length -1){
       Get.offAllNamed(AppRoute.signuporlogin);
     }else{
-    pageController.animateToPage(currentPage, duration: const Duration(microseconds: 900), curve: Curves.easeInOut);
+    pageController.animateToPage(currentPage, duration: const Duration(microseconds: 1000), curve: Curves.easeInOut);
     }
   }
 

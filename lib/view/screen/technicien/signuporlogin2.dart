@@ -39,7 +39,7 @@ class SignUpOrLogin2 extends StatelessWidget {
                     Text("Connectez-vous si vous avez de compte \n ou inscrivez-vous pour nous rejoindre ",
                     style: TextStyle(fontWeight: FontWeight.w700 , fontSize: 15),
                     ),
-                    SizedBox(height: 35),
+                    SizedBox(height: 15),
                      Boutton(
                       text: "Connectez-Vous",
                       color: Colors.white,
