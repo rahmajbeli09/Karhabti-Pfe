@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/auth/logincontroller.dart';
 import 'package:karhabti_pfe/core/function/alertexitapp.dart';
-import 'package:karhabti_pfe/core/function/validinput.dart';
 import 'package:karhabti_pfe/view/widget/auth/customtextbodyauth.dart';
 import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
 import 'package:karhabti_pfe/view/widget/auth/textsignuporsignin.dart';
@@ -67,7 +66,7 @@ class Login extends StatelessWidget {
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined ,
                           ),),
-                           Text("18".tr , textAlign: TextAlign.end, style: TextStyle(fontSize: 12 ,  decoration: TextDecoration.underline),),
+                           InkWell(child: Text("18".tr , textAlign: TextAlign.end, style: TextStyle(fontSize: 12 ,  decoration: TextDecoration.underline),) , onTap: (){controller.goToForgetPassword();},),
                       const SizedBox(height: 50,),
                       CustomTextSignUpOrSignIn(
                       texttwo: "14".tr,textone: "19".tr, 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:karhabti_pfe/core/constant/routes.dart';
 import 'package:karhabti_pfe/view/widget/boutton.dart';
-import '../../../../controller/client/panneController.dart';
+import '../../../../../controller/client/panneController.dart';
 
 class Panne extends StatelessWidget {
    Panne({Key? key}) : super(key: key);
@@ -36,7 +37,11 @@ class Panne extends StatelessWidget {
           } ,
           color: Color.fromARGB(255, 255, 203, 30),),
                     SizedBox(height:25,),
-          Text("Je ne peut pas preciser le type de panne" , style: TextStyle(decoration: TextDecoration.underline ,fontFamily: "Comfortaa" , fontSize: 15, fontWeight: FontWeight.w700),textAlign: TextAlign.center, ),
+          GestureDetector(
+            onTap: (){
+              Get.toNamed(AppRoute.messagepanne);
+            },
+            child: Text("Je ne peut pas preciser le type de panne" , style: TextStyle(decoration: TextDecoration.underline ,fontFamily: "Comfortaa" , fontSize: 15, fontWeight: FontWeight.w700),textAlign: TextAlign.center, )),
 
         ],
       ),

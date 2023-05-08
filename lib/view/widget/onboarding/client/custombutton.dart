@@ -10,7 +10,6 @@ class CustomButtonOnBoarding extends GetView<OnBoardingControllerImp> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
                     child: MaterialButton(
-                      
                       onPressed: (){
                         controller.next();
                       },

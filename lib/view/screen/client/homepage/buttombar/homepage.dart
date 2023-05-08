@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
         children: [
           Column(children: [
              NomEtPrenomContainer(),
+             SizedBox(height: 20,),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(children: [
@@ -30,6 +31,7 @@ class HomePage extends StatelessWidget {
                 ],),
               ),
             InkWell(child: VerticalContainer(image: "assets/images/panne.png", text: "Votre Voiture est-il en panne?"),onTap: (){controller.goToPanne();},),
+            InkWell(child: VerticalContainer(image: "assets/images/frais.png", text: "Consultez les dates d'échéance de vos papiers"),onTap: (){controller.goToFrais();}),            
             InkWell(child: VerticalContainer(image: "assets/images/venach.png", text: "Cherchez-vous des pièces de rechange ? \n Avez-vous des pièces de rechange à vendre?"),onTap: (){controller.goToVenteAchat();}),
           ]),
         ]

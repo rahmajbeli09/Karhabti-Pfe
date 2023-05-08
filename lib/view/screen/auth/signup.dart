@@ -6,7 +6,6 @@ import 'package:karhabti_pfe/controller/auth/signupcontroller.dart';
 import 'package:karhabti_pfe/core/function/alertexitapp.dart';
 import 'package:karhabti_pfe/services/user_model.dart';
 import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
-import '../../../core/function/validinput.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
