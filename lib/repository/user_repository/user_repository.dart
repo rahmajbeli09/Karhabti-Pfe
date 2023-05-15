@@ -62,6 +62,8 @@ Future<void> updateUserRecord(String id, UserModel user) async {
   }
 }
 
+  getUserByEmail(String? email) {}
+
 
 
 

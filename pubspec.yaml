@@ -29,28 +29,30 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+dependency_overrides:
+  flutter_lints: ^2.0.0
   cupertino_icons: ^1.0.2
   get: ^4.6.1
   get_storage: ^2.0.3
+  
+
   # DateTime
   jiffy: ^5.0.0
   intl: ^0.17.0
-  http: ^0.13.4
+  http: ^0.13.6
   # Images
   cached_network_image: ^3.2.0 
-  image_picker: ^0.7.2+1
+  image_picker: ^0.8.7+4
   # Animate
   show_up_animation: ^2.0.0
   auto_animated: ^3.0.1
   # Google Map
   flutter_polyline_points: ^1.0.0
   google_maps_flutter: ^2.1.5
-  geolocator: ^8.0.5
+  geolocator: ^9.0.2
   geocoding: ^2.0.4
   # Firebase And Notification 
   flutter_local_notifications: ^14.0.0+1
@@ -58,6 +60,8 @@ dependencies:
   firebase_auth: ^4.4.2
   firebase_core: ^2.10.0
   cloud_firestore: ^4.5.3
+  geoflutterfire: ^3.0.3
+  
   
   # Local Data Cache
   sqflite: ^2.0.2
@@ -66,10 +70,10 @@ dependencies:
   # Qrcode 
   qr_flutter: ^4.0.0
   scan: ^1.6.0
-  grouped_list: ^4.2.0
+  grouped_list: ^5.1.2
   url_launcher: ^6.1.2
-  dropdown_search: ^3.0.1
-  badges: ^2.0.2
+  dropdown_search: ^5.0.6
+  badges: ^3.1.1
   # Icon 
   # flutter_svg: ^1.0.3
   font_awesome_flutter: ^10.1.0
@@ -78,12 +82,12 @@ dependencies:
   # Google Auth
   google_sign_in: ^6.1.0
   device_preview: ^1.1.0
-  responsive_builder: ^0.4.2
+  responsive_builder: ^0.6.4
   image_pickers: ^2.0.0+2
   table_calendar: ^3.0.8
   awesome_dialog: ^3.0.2
-  flutter_osm_plugin: ^0.42.0
-  flutter_map: ^2.2.0
+  flutter_osm_plugin: ^0.53.2
+  flutter_map: ^3.1.0
   tuple: ^2.0.1
   positioned_tap_detector_2: ^1.0.4
   transparent_image: ^2.0.1
@@ -91,7 +95,7 @@ dependencies:
   proj4dart: ^2.1.0
   meta: ^1.7.0
   collection: ^1.16.0
-  latlng: ^0.2.1
+  latlng: ^1.0.0
   latlong: ^0.6.1
   location: ^4.4.0
   file_picker: ^5.2.11
@@ -103,6 +107,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_hooks: ^0.18.6
   flutter_otp_text_field: ^1.1.1
+  geoflutterfire2: ^2.3.15
   
   
 dev_dependencies:

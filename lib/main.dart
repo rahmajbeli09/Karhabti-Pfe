@@ -1,5 +1,7 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/routes.dart';
 import 'package:karhabti_pfe/view/screen/auth/login.dart';
@@ -19,6 +21,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'core/services/services.dart';
+import 'package:karhabti_pfe/view/screen/client/homepage/frais.dart';
 import 'view/screen/auth/resetpassword.dart';
 import 'view/screen/client/homepage/panne/liste.dart';
 import 'view/screen/client/homepage/panne/messagepanne.dart';
@@ -26,7 +29,7 @@ import 'view/screen/client/homepage/panne/messagepanne.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => Get.put(AuthController()));
-
+    await FirebaseMessaging.instance.getInitialMessage();
    await initialServices();
   runApp( MyApp());
 }
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
       translations : MyTranslation(),
       debugShowCheckedModeBanner: false,
       locale: controller.language,
-      home:  ResetPassword(),
+      home:  PageOne(),
       getPages: routes
     ); 
   }

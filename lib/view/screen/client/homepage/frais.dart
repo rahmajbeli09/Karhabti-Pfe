@@ -34,10 +34,10 @@ body: Container(
       Text("Suivez vos paiements en temps réel et recevez des notifications instantanées pour ne jamais manquer une facture" , textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w700 , fontSize: 15 , fontFamily: "Comfortaa"),),
       SizedBox(height: 40,),
       FraisTextFormFiled(
-        mycontroller: controller.assurance,
+         controller.assurance,
         text: "Date d'échéance de l'assurance automobile"),
-      FraisTextFormFiled(mycontroller: controller.vignette,text: "Date d'expiration de la vignette"),
-      FraisTextFormFiled(mycontroller: controller.visite,text: "Date de la prochaine visite technique"),
+      FraisTextFormFiled( controller.vignette,text: "Date d'expiration de la vignette"),
+      FraisTextFormFiled( controller.visite,text: "Date de la prochaine visite technique"),
       SizedBox(height: 30,),
       Boutton(text: "Sauvegarder", color: Color.fromARGB(255, 255, 203, 30))
     ],

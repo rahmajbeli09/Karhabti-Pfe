@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import '../../repository/user_repository/exceptions/signup_email_pwd_failure.dart';
 import '../../repository/user_repository/tech_repository.dart';
 import '../../services/tech_model.dart';
+import '../../view/screen/technicien/home/hometechscreen.dart';
 
 
 class AuthController extends GetxController {
@@ -19,6 +20,9 @@ class AuthController extends GetxController {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final userRepo = Get.put(UserRepository());
   final techRepo = Get.put(TechRepository());
+    String? getUserId() {
+    return firebaseUser.value?.uid;
+  }
 @override
 void onReady(){
   super.onReady();
@@ -26,14 +30,27 @@ void onReady(){
  firebaseUser.bindStream(auth.userChanges());
  ever(firebaseUser, _initialScreen); 
  }
- _initialScreen(User? user){
-if (user==null){
-  print("login page");
-  Get.offAll(()=>PageOne()); 
-}else{
-  Get.offAll(()=>HomeScreen());
+void _initialScreen(User? user) async {
+  if (user == null) {
+    // user is not logged in, show login page
+    Get.offAll(() => PageOne());
+  } else {
+    // check if user exists in Users collection
+    final email = user.email;
+    final userModel = await userRepo.getUserByEmail(email);
+    if (userModel != null) {
+      // user exists in Users collection, show home screen
+      Get.offAll(() => HomeScreen());
+    } else {
+      // check if user exists in Techniciens collection
+      final techModel = await techRepo.getTechByEmail(email);
+      if (techModel != null) {
+        // user exists in Techniciens collection, show tech home screen
+        Get.offAll(() => HomeTechScreen());
+      } 
+    }
+  }
 }
- }
   void register(String email , password)async{
     try{
   await auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -55,9 +72,17 @@ throw ex;
     }
   
   }
-  Future<void> createUser(UserModel user) async {
+  Future<void> createUser(UserModel user) async { //for the user
 await userRepo.createUser(user);
   }
+Future<void> createTech(TechModel user) async {
+  //final userId = AuthController.instance.getUserId();
+  //if (userId == null) {
+ //   throw Exception("User id not found");
+  
+  await techRepo.createTech(user);
+}
+
 
     void login(String email , password)async{ //hedhiya bdit feha w makamaltech fel login.dart en attendant el bouton logout bch ntesti bih
     try{
@@ -90,4 +115,6 @@ await userRepo.createUser(user);
   void LogOut() async{ //Flutter Firebase App Setup Tutorial & Getx Authentication | Using Email & Password | Part 2 min 39
     await auth.signOut();
   }
+  
+
 }

@@ -1,177 +1,170 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../../controller/technicien/profiltechcontroller.dart';
+import '../../../../../../services/tech_model.dart';
 import '../../../../../widget/boutton.dart';
 
 class EditTechProfil extends StatelessWidget {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _telController = TextEditingController();
+final controllerr = Get.put(ProfilTechControllerImp());
+
+   EditTechProfil({Key? key}) : super(key: key);
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    final controllerr = Get.put(ProfilTechControllerImp());
+
     return Scaffold(
-       appBar : AppBar(
-  leading: IconButton(
-    icon: Icon(Icons.arrow_back , color: Colors.black),
-    onPressed: () {
-      Get.back(); 
-    },
-  ),
-  centerTitle: true,
-  title: Text('Trouver un expert' , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
-  elevation: 0,
-  backgroundColor: Colors.white.withAlpha(0),
-),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
+        title: Text(
+          'Trouver un expert',
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: "Comfortaa",
+            fontWeight: FontWeight.bold,
+            fontSize: 18),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white.withAlpha(0),
+      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-             Image.asset('assets/images/profil.png', height: 100, width: 100,),
+            Image.asset(
+              'assets/images/profil.png',
+              height: 100,
+              width: 100,
+            ),
             SizedBox(height: 40),
-            Container(
+            Expanded(
+            child :Container(
+              
               margin: EdgeInsets.symmetric(horizontal: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20 , vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-    boxShadow: [
-      BoxShadow(
-        color: Colors.grey.withOpacity(0.5),
-        spreadRadius: 2,
-        blurRadius: 5,
-        offset: Offset(0, 3),
-      ),
-    ],),
-              child: Column(children: [
-                  _buildEditableField(
-              'Nom d\'utilisateur',
-              'RahmaJbeli',
-              _usernameController,
-            ),
-            SizedBox(height: 20),
-            _buildEditableField(
-              'Adresse e-mail',
-              'RahmaJbeli@gmail.com',
-              _emailController,
-            ),
-            SizedBox(height: 20),
-            _buildEditableField(
-              'Mot de passe',
-              '••••••••••••',
-              _passwordController,
-              obscureText: true,
-            ),
-            _buildEditableField(
-              'Numero de  telephone',
-              '123456789',
-              _telController,
-            ),
-              ]),
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: Boutton(
-                color: Color.fromARGB(255, 255, 203, 30),
-                text: "Sauvegarder",
-                onPressed: (){
-                    // Sauvegarder les modifications
-                  String username = _usernameController.text;
-                  String email = _emailController.text;
-                  String password = _passwordController.text;
-                  String tel = _telController.text;
-
-                  // Faire quelque chose avec les données saisies ici...
-                },
-              ),
-            )
-           
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildEditableField(
-    String label,
-    String value,
-    TextEditingController controller, {
-    bool obscureText = false,
-  }) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-              fontSize: 20,
-              fontFamily: "Comfortaa"
-            ),
-          ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  controller: TextEditingController(text: value ),
-                  readOnly: true,
-                  obscureText: obscureText,
-                  decoration: InputDecoration(
-                    hintText: value,
-                    border: InputBorder.none,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 3),
                   ),
-                ),
+                ],
               ),
-              IconButton(
-                icon: Icon(Icons.edit),
-                onPressed: () {
-                  Get.defaultDialog(
-                    title: '  Modifier $label  ',
-                    content: Container(
-                      padding: EdgeInsets.symmetric(vertical: 10 , horizontal: 10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextFormField(
-                            controller: controller,
-                            obscureText: obscureText,
-                            decoration: InputDecoration(
-                              labelText: 'Ancien $label',
-                            ),
-                          ),
-                          TextFormField(
-                            controller: controller,
-                            obscureText: obscureText,
-                            decoration: InputDecoration(
-                              labelText: 'Nouveau $label',
-                            ),
-                          ),
-                        ],
+child: FutureBuilder(
+  future: controllerr.getUserData(),
+  builder: (context, snapshot) {
+    print('futureBuilder snapshot: $snapshot');
+
+    if (snapshot.connectionState == ConnectionState.done) {
+      print("connected"); //means that the data is fetched
+      if (snapshot.hasData) {
+        print(snapshot.data);
+        print("snapshot worked");
+        TechModel user = snapshot.data as TechModel;
+        final email = TextEditingController(text: user.email);
+        final password = TextEditingController(text: user.password);
+        final phoneNumber = TextEditingController(text: user. phoneNumber);
+        final fullname = TextEditingController(text: user.fullname);
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 50,),
+              Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: fullname,
+                      decoration: InputDecoration(
+                        labelText: 'Full Name',
+                        prefixIcon: Icon(Icons.person),
                       ),
+
                     ),
-                    confirm:Boutton(
-                      text: "Sauvegarder", 
-                    color: Color.fromARGB(255, 255, 203, 30),
-                    onPressed: () {
-                        Get.back();
-                      },
+                    const SizedBox(height: 10,),
+                    TextFormField(
+                      controller: email,
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        prefixIcon: Icon(Icons.email),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      
+                    ),
+                    const SizedBox(height: 10,),
+                    TextFormField(
+                      controller: phoneNumber,
+                      decoration: InputDecoration(
+                        labelText: 'Phone number',
+                        prefixIcon: Icon(Icons.phone),
+                      ),
+                      keyboardType: TextInputType.phone,
+
+                    ),
+                    const SizedBox(height: 10,),
+                    TextFormField(
+                      controller: password,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        prefixIcon: Icon(Icons.lock),
+                      ),
+                      obscureText: true,
+
                     ),
                     
-                    cancel: Boutton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      text: 'Annuler',
-                      color: Color.fromARGB(255, 255, 203, 30),
-                    ),
-                  );
-                },
+                    const SizedBox(height: 20,),
+ElevatedButton(
+   onPressed: () async {
+    if (formKey.currentState!.validate()) {
+      TechModel updatedUser = TechModel(
+        id: user.id,
+        email: email.text,
+        fullname: fullname.text,
+        phoneNumber: phoneNumber.text,
+        password: password.text,
+      );
+      await controllerr.updateRecord(user.id!, updatedUser);
+      print('User data updated: $updatedUser');
+    }
+  },
+  child: Text('Save Changes'),
+)
+
+
+                  ],
+                ),
               ),
             ],
           ),
-        ],
-      
+        );
+      } else {
+        return const Center(child: Text('No data available'));
+      }
+    }
+    // Handle other connection states here
+    return const Center(child: CircularProgressIndicator());
+  },
+),
+
+
+
+            ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

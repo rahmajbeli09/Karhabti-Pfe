@@ -8,11 +8,11 @@ import '../../../../../controller/client/locationcontroller.dart';
 // ignore: must_be_immutable
 class Localisezvous extends StatelessWidget {
    Localisezvous({Key? key}) : super(key: key);
-    Location_ControllerImp controller = Get.put(Location_ControllerImp());
+    LocationController controller = Get.put(LocationController());
     double ?x;
     double ?y;
     Future <void> getLocation() async {
-     controller.getpermission();
+     controller.getPermission();
   Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high);
       print('Latitude: ${position.latitude}');

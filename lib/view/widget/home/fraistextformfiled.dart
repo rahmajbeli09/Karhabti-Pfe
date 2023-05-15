@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FraisTextFormFiled extends StatelessWidget {
-  const FraisTextFormFiled({Key? key, required this.text, this.mycontroller}) : super(key: key);
+  const FraisTextFormFiled(TextEditingController textEditingController, {Key? key, required this.text, this.mycontroller}) : super(key: key);
  final String text ; 
  final TextEditingController? mycontroller;
   @override
