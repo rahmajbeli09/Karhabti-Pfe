@@ -6,14 +6,16 @@ class UserModel{
   final String email ;
   final String phoneNumber;
   final String password;
-
+    final double? latitude;
+  final double? longitude;
   const UserModel({
 this.id,
 required this.email,
 required this.fullname,
 required this.phoneNumber,
 required this.password,
-  
+  this.longitude,
+  this.latitude,
 
 });
 toJson(){

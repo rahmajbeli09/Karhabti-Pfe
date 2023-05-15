@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/services/user_model.dart';
 
+import '../../controller/auth/authcontroller.dart';
+
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
-
+final authController = Get.find<AuthController>;
   Future<void> createUser(UserModel user) async {
    await  _db.collection("Users").add(user.toJson()).whenComplete(() {
      Get.snackbar(
@@ -63,6 +65,22 @@ Future<void> updateUserRecord(String id, UserModel user) async {
 }
 
   getUserByEmail(String? email) {}
+ Future<void> updateUserLocation(String id, String email, double latitude, double longitude) async {
+if (email != null) {
+  try {
+    Map<String, dynamic> locationData = {
+      'latitude': latitude,
+      'longitude': longitude,
+    };
+    await _db.collection('Users').doc(id).update(locationData);
+    print('User location updated: ($latitude, $longitude)');
+  } catch (e) {
+    print('Failed to update User location: $e');
+  }
+}
+
+   
+  }
 
 
 

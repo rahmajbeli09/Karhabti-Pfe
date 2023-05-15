@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/auth/authcontroller.dart';
 import 'package:karhabti_pfe/controller/client/locationcontroller.dart';
 import 'package:karhabti_pfe/repository/user_repository/tech_repository.dart';
+import 'package:karhabti_pfe/services/tech_model.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/panne/map.dart';
 import 'package:karhabti_pfe/view/screen/technicien/home/buttombar/profil/maptech.dart';
 import 'package:karhabti_pfe/view/widget/boutton.dart';
@@ -16,6 +17,8 @@ class Adresse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LocationController controller = Get.put(LocationController());
+    final authController = Get.put(AuthController());
+    final techRepo = Get.put(TechRepository());
 
     Future<void> _updateTechnicianLocation() async {
       // Get the current location of the technician
@@ -27,24 +30,35 @@ class Adresse extends StatelessWidget {
         return;
       }
 
-      // Get the ID of the authenticated user
-      final AuthController authController = Get.find<AuthController>();
-      final String? id = authController.firebaseUser.value?.uid;
-      if (id == null) {
-        print('could not access user id');
-        return;
-      }
+      // Get the user email
+      final String? email = authController.firebaseUser.value?.email;
+      if (email != null) {
+        // Retrieve the technician document based on the email
+        final TechModel technician = await techRepo.getUserDetails(email);
+        final String? id = technician.id;
+        if (id != null) {
+          // Check if the document exists
+          final DocumentSnapshot doc =
+              await FirebaseFirestore.instance.collection('Techniciens').doc(id).get();
+          if (!doc.exists) {
+            print('Document with ID $id does not exist.');
+            return;
+          }
 
-      // Check if the technician document exists in Firestore
-      final DocumentSnapshot doc = await FirebaseFirestore.instance.collection('Techniciens').doc(id).get();
-      if (!doc.exists) {
-        print('Document with ID $id does not exist.');
-        return;
-      }
+          // Update the technician document in Firestore
+          await techRepo.updateTechnicienLocation(id, email, latitude, longitude);
 
-      // Update the technician document in Firestore
-      final TechRepository techRepo = Get.find<TechRepository>();
-      await techRepo.updateTechnicienLocation(id, latitude, longitude);
+          // Retrieve the technician's location data from Firestore
+          final DocumentSnapshot doc2 =
+              await FirebaseFirestore.instance.collection('Techniciens').doc(id).get();
+          final Map<String, dynamic> data = doc2.data() as Map<String, dynamic>;
+          final double? lat = data['latitude'];
+          final double? long = data['longitude'];
+          print('Updated technician location: $lat, $long');
+        } else {
+          print('Could not access user ID');
+        }
+      }
     }
 
     return Scaffold(
@@ -97,47 +111,55 @@ class Adresse extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 80),
-   Boutton(
+Boutton(
   text: "Localisez-Vous",
-  onPressed: () async {
-    Get.to(MapTech());
-    Position? position = await controller.getLocation();
-    double? latitude = position?.latitude;
-    double? longitude = position?.longitude;
-    if (latitude == null || longitude == null) {
-      Get.snackbar('Erreur', 'Impossible de récupérer votre emplacement.');
-      return;
-      
-    }
+onPressed: () async {
+  // Navigate to the MapTech screen
+  Get.to(MapTech());
 
-    AuthController authController = Get.find<AuthController>();
-    TechRepository techRepo = Get.find<TechRepository>();
-    String? id = authController.firebaseUser.value?.uid;
+  // Get the current location of the technician
+  Position? position = await controller.getLocation();
+  double? latitude = position?.latitude;
+  double? longitude = position?.longitude;
+  if (latitude == null || longitude == null) {
+    Get.snackbar('Erreur', 'Impossible de récupérer votre emplacement.');
+    return;
+  }
+
+  // Get the user email
+  final String? email = authController.firebaseUser.value?.email;
+  if (email != null) {
+    // Retrieve the technician document based on the email
+    final TechModel technician = await techRepo.getUserDetails(email);
+    final String? id = technician.id;
     if (id != null) {
       // Check if the document exists
-      DocumentSnapshot doc = await FirebaseFirestore.instance.collection('Techniciens').doc("l32bx2FqUsSlo1921Wpp").get();
+      final DocumentSnapshot doc =
+          await FirebaseFirestore.instance.collection('Techniciens').doc(id).get();
       if (!doc.exists) {
-        print('Document with ID  ${"l32bx2FqUsSlo1921Wpp"}  does not exist.');
-        
+        print('Document with ID $id does not exist.');
         return;
       }
 
-
       // Update the technician document in Firestore
-      await techRepo.updateTechnicienLocation(id,latitude, longitude);
+      await techRepo.updateTechnicienLocation(id, email, latitude, longitude);
 
       // Retrieve the technician's location data from Firestore
-      DocumentSnapshot doc2 = await FirebaseFirestore.instance.collection('Techniciens').doc(id).get();
-      Map<String, dynamic> data = doc2.data() as Map<String, dynamic>;
-      double? lat = data['latitude'];
-      double? long = data['longitude'];
+      final DocumentSnapshot doc2 =
+          await FirebaseFirestore.instance.collection('Techniciens').doc(id).get();
+      final Map<String, dynamic> data = doc2.data() as Map<String, dynamic>;
+      final double? lat = data['latitude'];
+      final double? long = data['longitude'];
       print('Updated technician location: $lat, $long');
     } else {
-      print('could not access user id');
+      print('Could not access user ID');
     }
-  },
+  }
+},
+
   color: Color.fromARGB(255, 255, 203, 30),
-   ),
+),
+
     ],    ),
       ),
     );

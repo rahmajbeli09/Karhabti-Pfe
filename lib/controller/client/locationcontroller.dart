@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:karhabti_pfe/repository/user_repository/user_repository.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../repository/user_repository/tech_repository.dart';
 import '../../services/tech_model.dart';
@@ -9,6 +10,7 @@ import '../auth/authcontroller.dart';
 class LocationController extends GetxController {
     final _authController = Get.put(AuthController());
   final techRepo = Get.put(TechRepository());
+  final userRepo = Get.put(UserRepository());
   Future<Position?> getLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -53,10 +55,10 @@ class LocationController extends GetxController {
     await Geolocator.requestPermission();
   }
   
-Future<void> saveLocation(TechModel user ,double latitude, double longitude) async {
-   final techRef = FirebaseFirestore.instance.collection('techniciens').doc(user.id);
-    final location = GeoPoint(latitude, longitude);
-   await techRef.update({'location': location});
-}
+// Future<void> saveLocation(TechModel user ,double latitude, double longitude) async {
+//    final techRef = FirebaseFirestore.instance.collection('techniciens').doc(user.id);
+//     final location = GeoPoint(latitude, longitude);
+//    await techRef.update({'location': location});
+// }
   
 }
