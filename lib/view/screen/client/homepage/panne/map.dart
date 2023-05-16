@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
+import 'package:karhabti_pfe/repository/user_repository/tech_repository.dart';
+
+import '../../../../../services/tech_model.dart';
 
 class MapController extends GetxController {
   final myMarker = Set<Marker>().obs;
@@ -10,6 +14,10 @@ class MapController extends GetxController {
     target: LatLng(2, 3),
     zoom: 17.4746,
   ).obs;
+  final techRepo = Get.put(TechRepository());
+  final BitmapDescriptor blueMarkerIcon = BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue);
+
+
 
   Future<void> getPosition() async {
     await Geolocator.checkPermission();
@@ -23,9 +31,11 @@ class MapController extends GetxController {
       zoom: 17.4746,
     );
   }
-  void goToList(){
+
+  void goToList() {
     Get.toNamed(AppRoute.liste);
-   }
+  }
+
   Future<void> changeMarker(double newLat, double newLong) async {
     myMarker.remove(Marker(markerId: MarkerId("1")));
     myMarker.add(
@@ -35,7 +45,50 @@ class MapController extends GetxController {
       ),
     );
   }
+
+  void fetchTechnicianLocations() async {
+    List<TechModel> users = await techRepo.fetchTechnicianLocations();
+    myMarker.value = users.map((user) {
+      return Marker(
+        markerId: MarkerId(user.id ?? ''),
+        position: LatLng(user.latitude, user.longitude),
+        icon: blueMarkerIcon,
+        onTap: () {
+          showTechnicianInfo(user);
+        },
+      );
+    }).toSet();
+  }
+  void showTechnicianInfo(TechModel user) { //hedhi bech talla3lek les informations mtaa technicien fi container 
+      print("Showing technician info: ${user.fullname}");
+     showDialog(
+      context: Get.context!,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Technician Information'),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Name: ${user.fullname}'),
+              Text('Phone: ${user.phoneNumber}'),
+              // Text('Email: ${user.email}'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
+
 
 class MapPage extends StatelessWidget {
   final controller = Get.put(MapController());
@@ -59,9 +112,11 @@ class MapPage extends StatelessWidget {
                 onPressed: () async {
                   await controller.getPosition();
                   await controller.changeMarker(
-                      controller.kGooglePlex.value.target.latitude,
-                      controller.kGooglePlex.value.target.longitude);
-                      controller.goToList();
+                    controller.kGooglePlex.value.target.latitude,
+                    controller.kGooglePlex.value.target.longitude,
+                  );
+                    controller.fetchTechnicianLocations();
+                 // controller.goToList();
                 },
                 icon: Icon(
                   Icons.my_location_outlined,

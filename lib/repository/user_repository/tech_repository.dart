@@ -9,7 +9,6 @@ class TechRepository extends GetxController {
   static TechRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
       final authController = Get.find<AuthController>;
-  
 
    Future<void> createTech(TechModel user) async {
   final userJson = user.toJson();
@@ -77,6 +76,21 @@ if (email != null) {
 
    
   }
+Future<List<TechModel>> fetchTechnicianLocations() async {
+  final snapshot = await _db.collection("Techniciens").get();
+
+  // Parse the user documents into a list of TechModel models
+  List<TechModel> users = snapshot.docs.map((doc) {
+    return TechModel.fromSnapshot(doc);
+  }).toList();
+
+  // Filter technicians with non-null latitude and longitude
+  List<TechModel> techniciansWithLocation = users.where((user) {
+    return user.latitude != null && user.longitude != null;
+  }).toList();
+
+  return techniciansWithLocation;
+}
 
   
 }
