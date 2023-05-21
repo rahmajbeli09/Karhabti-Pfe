@@ -14,8 +14,8 @@ required this.email,
 required this.fullname,
 required this.phoneNumber,
 required this.password,
-  this.longitude,
-  this.latitude,
+    this.latitude = 0.0,
+    this.longitude = 0.0,
 
 });
 toJson(){
@@ -24,6 +24,8 @@ toJson(){
   "email" : email,
   "password": password,
   "phoneNumber": phoneNumber,
+        "latitude": latitude,
+      "longitude": longitude,
   };
 }
 //step1 : map user fetched from firebase to usermodel
@@ -34,6 +36,8 @@ factory UserModel.fromSnapshot(DocumentSnapshot<Map<String , dynamic>> document 
     email: data["email"] ,
      fullname: data["fullname"],
       phoneNumber: data["phoneNumber"],
-       password: data["password"]);
+       password: data["password"],
+       latitude: data["latitude"] ?? 0.0,
+      longitude: data["longitude"] ?? 0.0,);
 }
 }

@@ -19,7 +19,7 @@ class HomeScreenControllerImp extends HomeScreenController{
     Profil(),
     Messages(),
     History(),
-    Notifications(),
+    Notifications(info: '',),
   ];
 
  

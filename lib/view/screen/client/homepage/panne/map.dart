@@ -19,32 +19,38 @@ class MapController extends GetxController {
 
 
 
-  Future<void> getPosition() async {
-    await Geolocator.checkPermission();
-    await Geolocator.requestPermission();
+Future<void> getPosition() async {
+  await Geolocator.checkPermission();
+  await Geolocator.requestPermission();
 
-    final cl = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
-    kGooglePlex.value = CameraPosition(
-      target: LatLng(cl.latitude, cl.longitude),
-      zoom: 17.4746,
-    );
-  }
+  final cl = await Geolocator.getCurrentPosition(
+    desiredAccuracy: LocationAccuracy.high,
+  );
+  kGooglePlex.value = CameraPosition(
+    target: LatLng(cl.latitude, cl.longitude),
+    zoom: 17.4746,
+  );
+}
 
-  void goToList() {
-    Get.toNamed(AppRoute.liste);
-  }
 
-  Future<void> changeMarker(double newLat, double newLong) async {
-    myMarker.remove(Marker(markerId: MarkerId("1")));
-    myMarker.add(
-      Marker(
-        markerId: MarkerId("1"),
-        position: LatLng(newLat, newLong),
-      ),
-    );
-  }
+  // void goToList() {
+  //   Get.toNamed(AppRoute.liste);
+  // }
+
+Future<void> changeMarker(double newLat, double newLong) async {
+  myMarker.remove(Marker(markerId: MarkerId("1")));
+  myMarker.add(
+    Marker(
+      markerId: MarkerId("1"),
+      position: LatLng(newLat, newLong),
+    ),
+  );
+  kGooglePlex.value = CameraPosition(
+    target: LatLng(newLat, newLong),
+    zoom: kGooglePlex.value.zoom,
+  );
+}
+
 
   void fetchTechnicianLocations() async {
     List<TechModel> users = await techRepo.fetchTechnicianLocations();
@@ -111,12 +117,7 @@ class MapPage extends StatelessWidget {
               child: IconButton(
                 onPressed: () async {
                   await controller.getPosition();
-                  await controller.changeMarker(
-                    controller.kGooglePlex.value.target.latitude,
-                    controller.kGooglePlex.value.target.longitude,
-                  );
-                    controller.fetchTechnicianLocations();
-                 // controller.goToList();
+                  controller.fetchTechnicianLocations();
                 },
                 icon: Icon(
                   Icons.my_location_outlined,

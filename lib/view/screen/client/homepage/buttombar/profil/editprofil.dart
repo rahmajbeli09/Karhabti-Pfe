@@ -79,7 +79,7 @@ child: FutureBuilder(
         UserModel user = snapshot.data as UserModel;
         final email = TextEditingController(text: user.email);
         final password = TextEditingController(text: user.password);
-        final phoneNumber = TextEditingController(text: user. phoneNumber);
+        final phoneNumber = TextEditingController(text: user.phoneNumber);
         final fullname = TextEditingController(text: user.fullname);
         return SingleChildScrollView(
           child: Column(

@@ -81,8 +81,20 @@ if (email != null) {
 
    
   }
+//this method was created to retrive the user details to link the frais collection with the users
+  Future<UserModel?> getUserDetail(String email) async {
+    final snapshot =
+        await _db.collection("Users").where("email", isEqualTo: email).get();
 
-
+    if (snapshot.docs.isNotEmpty) {
+      final user = UserModel.fromSnapshot(snapshot.docs.first);
+      print("user details passed ");
+      return user;
+    } else {
+      print("mochkla");
+      return null;
+    }
+  }
 
 
 }

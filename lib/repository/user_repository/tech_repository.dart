@@ -92,5 +92,6 @@ Future<List<TechModel>> fetchTechnicianLocations() async {
   return techniciansWithLocation;
 }
 
+
   
 }
