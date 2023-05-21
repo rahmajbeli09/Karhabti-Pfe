@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/function/alertexitapp.dart';
-import '../../widget/auth/custombuttonauth.dart';
-import '../../widget/auth/customtextbodyauth.dart';
-import '../../widget/auth/customtexttitleauth.dart';
+import 'package:karhabti_pfe/view/widget/auth/customtextformauth.dart';
+import '../../../../controller/auth/resetpasswordcontroller.dart';
+import '../../../widget/auth/custombuttonauth.dart';
+import '../../../widget/auth/customtextbodyauth.dart';
+import '../../../widget/auth/customtexttitleauth.dart';
 // ignore: must_be_immutable
 class ResetPassword extends StatelessWidget {
    ResetPassword({Key? key}) : super(key: key);
-
+  ResetPasswordControllerImp controller = Get.put(ResetPasswordControllerImp());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,13 +28,15 @@ class ResetPassword extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.only(right: 80),
                           child: Image.asset("assets/images/verifycode.png" , height: 180, width: 50, alignment: Alignment.topLeft,)),
-                          CustomTextTiltleFormAuth(text :"vérifier l'e-mail"),
+                          SizedBox(height: 30,),
+                          CustomTextTiltleFormAuth(text :"Nouveau mot de passe"),
                         const SizedBox(height: 10,),
-                          CustomTextBodyAuth(text: "21".tr),
+                          CustomTextBodyAuth(text: "Merci d'entrer votre nouveau mot de passe".tr),
                         SizedBox(height: 45,),
+                        CustomTextFormAuth(hinttext: "Nouveau mot de passe", iconData: Icons.password_outlined , mycontroller: controller.password,),
                         const SizedBox(height: 10,),
-                                      CustomButtomAuth(text: "14".tr, onPressed :() {
-               
+                                      CustomButtomAuth(text: "Enregistrer".tr, onPressed :() {
+               controller.goToSuccessResetPassword();
               }),
                       ],
                     ),

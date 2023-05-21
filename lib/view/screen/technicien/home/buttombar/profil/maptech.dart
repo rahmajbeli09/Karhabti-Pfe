@@ -23,7 +23,12 @@ class _MapTechState extends State<MapTech> {
         target: LatLng(cl!.latitude, cl!.longitude), zoom: 17.4746);
    }
   Set<Marker> mymarker = {
-
+    Marker(
+       draggable: true,
+      
+        markerId: MarkerId("1"),
+        position: LatLng(30, 40),
+      ),
   };
 
  Chang(newlat,newlong)async{

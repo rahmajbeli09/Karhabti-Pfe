@@ -30,6 +30,7 @@ class MapController extends GetxController {
     myMarker.remove(Marker(markerId: MarkerId("1")));
     myMarker.add(
       Marker(
+        draggable: true,
         markerId: MarkerId("1"),
         position: LatLng(newLat, newLong),
       ),
@@ -48,6 +49,7 @@ class MapPage extends StatelessWidget {
           children: [
             Obx(
               () => GoogleMap(
+                mapType: MapType.hybrid,
                 markers: controller.myMarker.value,
                 initialCameraPosition: controller.kGooglePlex.value,
               ),

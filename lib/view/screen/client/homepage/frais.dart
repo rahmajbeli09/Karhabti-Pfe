@@ -21,7 +21,7 @@ class Frais extends StatelessWidget {
     },
   ),
   centerTitle: true,
-  title: Text("Suivre l'échéance de papiers" , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
+  title: Text("58".tr , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
   elevation: 0,
   backgroundColor: Colors.white.withAlpha(0),
 ),
@@ -31,15 +31,15 @@ body: Container(
   ListView(
     children: [
       Image.asset("assets/images/frais2.png" , height: 200,),
-      Text("Suivez vos paiements en temps réel et recevez des notifications instantanées pour ne jamais manquer une facture" , textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w700 , fontSize: 15 , fontFamily: "Comfortaa"),),
+      Text("59".tr , textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w700 , fontSize: 15 , fontFamily: "Comfortaa"),),
       SizedBox(height: 40,),
       FraisTextFormFiled(
         mycontroller: controller.assurance,
-        text: "Date d'échéance de l'assurance automobile"),
-      FraisTextFormFiled(mycontroller: controller.vignette,text: "Date d'expiration de la vignette"),
-      FraisTextFormFiled(mycontroller: controller.visite,text: "Date de la prochaine visite technique"),
+        text: "60".tr),
+      FraisTextFormFiled(mycontroller: controller.vignette,text: "61".tr),
+      FraisTextFormFiled(mycontroller: controller.visite,text: "62".tr),
       SizedBox(height: 30,),
-      Boutton(text: "Sauvegarder", color: Color.fromARGB(255, 255, 203, 30))
+      Boutton(text: "63".tr, color: Color.fromARGB(255, 255, 203, 30))
     ],
   ),
   )

@@ -33,26 +33,32 @@ class SignUpOrLogin2 extends StatelessWidget {
                       ),
                       child: Image.asset("assets/images/logo.png"),
                     ),
-                                        SizedBox(height: 150,),
-                    Text("Bienvenue" , style: TextStyle(fontSize: 40 , fontFamily: "Comfortaa", fontWeight: FontWeight.w800),),
+                     SizedBox(height: 120,),
+                    Text("15".tr , style: TextStyle(fontSize: 25 , fontFamily: "Comfortaa", fontWeight: FontWeight.w800), textAlign: TextAlign.center,),
                     SizedBox(height: 15,),
-                    Text("Connectez-vous si vous avez de compte \n ou inscrivez-vous pour nous rejoindre ",
-                    style: TextStyle(fontWeight: FontWeight.w700 , fontSize: 15),
+                    Text("33".tr,
+                    style: TextStyle(fontWeight: FontWeight.w500 , fontSize: 17 , fontFamily: "Comfortaa"), textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 15),
-                     Boutton(
-                      text: "Connectez-Vous",
-                      color: Colors.white,
-                      onPressed: (){
-                        controller.goToLogin();
-                      },
-                      ),
-                      Boutton(text: "Inscrivez-Vous", 
-                      color: Colors.white,
-                      onPressed: (){
-                      controller.goToSignUp();
-                      },
-                      ),
+                    SizedBox(height: 45,),
+                     Column(
+                       children: [
+                         Boutton(
+                          text: "13".tr,
+                          color: Colors.white,
+                          onPressed: (){
+                            controller.goToLogin();
+                          },
+                          ),
+                           Boutton(text: "14".tr, 
+                            color: Colors.white,
+                            onPressed: (){
+                            controller.goToSignUp();
+                            },
+                            ),
+
+                       ],
+                     ),
+                     
                    ],
                  )),
       ));

@@ -34,17 +34,17 @@ class AreYou extends StatelessWidget {
                       child: Image.asset("assets/images/logo.png"),
                     ),
                     SizedBox(height: 120,),
-                     Text("Je Suis un/une ..", style: TextStyle(fontFamily: "Comfortaa" , fontSize: 25, fontWeight: FontWeight.w800),),
+                     Text("24".tr, style: TextStyle(fontFamily: "Comfortaa" , fontSize: 25, fontWeight: FontWeight.w800),),
                      SizedBox(height: 100,),
                     Boutton(
-                      text: "Client", 
+                      text: "25".tr, 
                       color: Colors.white , 
                       onPressed: (){
                         controller.goToOnBoarding();
                         }),
                      SizedBox(height: 5,),
                     Boutton(
-                      text: "Technicien", 
+                      text: "26".tr, 
                     color: Colors.white , 
                     onPressed: (){
                       controller.goToOnBoarding2();

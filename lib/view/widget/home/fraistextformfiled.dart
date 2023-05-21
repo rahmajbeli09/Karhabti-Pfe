@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FraisTextFormFiled extends StatelessWidget {
   const FraisTextFormFiled({Key? key, required this.text, this.mycontroller}) : super(key: key);
@@ -12,7 +13,7 @@ class FraisTextFormFiled extends StatelessWidget {
         controller: mycontroller,
           decoration: InputDecoration(
             label:Text(text) ,   
-                hintText: "(JJ/MM/AAAA)",
+                hintText: "64".tr,
                 hintStyle: const TextStyle(fontSize: 14, color: Color.fromARGB(255, 131, 127, 127) ,fontFamily: "Comfortaa",fontWeight: FontWeight.w800) ,
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 contentPadding:

@@ -32,7 +32,7 @@ class Localisezvous extends StatelessWidget {
     },
   ),
   centerTitle: true,
-  title: Text('Trouver un expert' , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
+  title: Text('50'.tr , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
   elevation: 0,
   backgroundColor: Colors.white.withAlpha(0),
 ),
@@ -42,12 +42,11 @@ class Localisezvous extends StatelessWidget {
           children: [
             Image.asset("assets/images/loc.png" , height: 300,),
               SizedBox(height: 50,),
-              Text(" Merci de determiner votre position" , style: TextStyle(fontSize: 19 , fontFamily: "comfortaa" , fontWeight: FontWeight.w800),textAlign: TextAlign.center,),
+              Text("55".tr , style: TextStyle(fontSize: 19 , fontFamily: "comfortaa" , fontWeight: FontWeight.w800),textAlign: TextAlign.center,),
               SizedBox(height: 20,),
-              Text( "Cliquez sur le bouton 'Localisez-vous' pour accéder à une liste de techniciens qualifiés se trouvant à proximité de votre position." , style: TextStyle(fontSize: 13 , fontFamily: "comfortaa" , fontWeight: FontWeight.w600),textAlign: TextAlign.center,),
+              Text( "56".tr , style: TextStyle(fontSize: 13 , fontFamily: "comfortaa" , fontWeight: FontWeight.w600),textAlign: TextAlign.center,),
               SizedBox(height: 80,),
-              Boutton(text: "Localisez-Vous" , onPressed: ()async{
-
+              Boutton(text: "57".tr , onPressed: ()async{
                 controller.getLocation();
                await Get.to(MapPage());
               },

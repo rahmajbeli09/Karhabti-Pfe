@@ -101,7 +101,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_hooks: ^0.18.6
   flutter_otp_text_field: ^1.1.1
-  
+  basic_utils: ^1.0.4
   
 dev_dependencies:
   flutter_test:
@@ -136,6 +136,7 @@ flutter:
     - assets/images/panne.png
     - assets/images/pannepage.png
     - assets/images/background.jpeg
+    - assets/images/background.png
     - assets/images/back2.jpeg
     - assets/images/loginorsignup.png
     - assets/images/ch-batt.png
@@ -173,6 +174,7 @@ flutter:
     - assets/images/frais2.png
     - assets/images/forgetpassword.png
     - assets/images/verifycode.png
+    - assets/images/success.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

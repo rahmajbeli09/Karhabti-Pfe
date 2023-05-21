@@ -18,21 +18,21 @@ class Panne extends StatelessWidget {
     },
   ),
   centerTitle: true,
-  title: Text('Trouver un expert' , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
+  title: Text('50'.tr , style: TextStyle(color: Colors.black , fontFamily: "Comfortaa" , fontWeight: FontWeight.bold , fontSize: 18),),
   elevation: 0,
   backgroundColor: Colors.white.withAlpha(0),
 ),
       body: Column(
         children: [
           Image.asset("assets/images/pannepage.png" , height:400 , width: 400,),
-          Text("Preciser le type de panne",style: TextStyle(fontFamily: "Comfortaa" , fontSize: 20, fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
+          Text("51".tr,style: TextStyle(fontFamily: "Comfortaa" , fontSize: 20, fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
          SizedBox(height: 20,),
-         Boutton(text: "Panne Electrique" , onPressed: (){
+         Boutton(text: "52".tr , onPressed: (){
             controller.goToLoc();
           } ,
           color :Color.fromARGB(255, 255, 203, 30)),
           SizedBox(height: 5,),
-           Boutton(text: "Panne Mecanique" , onPressed: (){
+           Boutton(text: "53".tr , onPressed: (){
             controller.goToLoc();
           } ,
           color: Color.fromARGB(255, 255, 203, 30),),
@@ -41,7 +41,7 @@ class Panne extends StatelessWidget {
             onTap: (){
               Get.toNamed(AppRoute.messagepanne);
             },
-            child: Text("Je ne peut pas preciser le type de panne" , style: TextStyle(decoration: TextDecoration.underline ,fontFamily: "Comfortaa" , fontSize: 15, fontWeight: FontWeight.w700),textAlign: TextAlign.center, )),
+            child: Text("54".tr , style: TextStyle(decoration: TextDecoration.underline ,fontFamily: "Comfortaa" , fontSize: 15, fontWeight: FontWeight.w700),textAlign: TextAlign.center, )),
 
         ],
       ),

@@ -6,6 +6,8 @@ import 'package:karhabti_pfe/core/constant/routes.dart';
 abstract class LoginTechController extends GetxController{
   login();
   goToSignUp();
+  goToForgetPassword() ;
+  
 }
 
 class LoginTechControllerImp extends LoginTechController{
@@ -47,6 +49,10 @@ class LoginTechControllerImp extends LoginTechController{
     email.dispose();
     password.dispose();
     super.dispose();
+  }
+   @override
+  goToForgetPassword() {
+    Get.toNamed(AppRoute.forgetPasswordtech);
   }
   
   

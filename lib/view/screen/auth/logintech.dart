@@ -54,7 +54,7 @@ class LoginTech extends StatelessWidget {
                            hinttext: "17".tr,
                            iconData: Icons.lock_outlined,
                           ),),
-                           Text("18".tr , textAlign: TextAlign.end, style: TextStyle(fontSize: 12 ,  decoration: TextDecoration.underline),),
+                           InkWell(child: Text("18".tr , textAlign: TextAlign.end, style: TextStyle(fontSize: 12 ,  decoration: TextDecoration.underline),) , onTap: (){controller.goToForgetPassword();},),
                       const SizedBox(height: 30,),
                       CustomTextSignUpOrSignIn(
                       texttwo: "14".tr,textone: "19".tr, 

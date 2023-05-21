@@ -23,6 +23,9 @@ class CustomTextFormAuth extends StatelessWidget {
           controller: mycontroller,
           obscureText: obscureText == null || obscureText == false ? false : true,
           decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Color.fromARGB(255, 33, 32, 30)),
+  ),
               hintText: hinttext,
               hintStyle: const TextStyle(fontSize: 14, color: Color.fromARGB(255, 131, 127, 127) ,fontFamily: "Comfortaa",fontWeight: FontWeight.w800) ,
               floatingLabelBehavior: FloatingLabelBehavior.always,

@@ -121,7 +121,7 @@ class SignUpTech extends StatelessWidget {
          SizedBox(height: 20,),
               CustomButtomAuth(text: "14".tr, onPressed :() {
                 controller.SignUp();
-                controller.goToHomePage();
+                controller.gotosuccesssignup();
               }),
               SocialMedia()
                     

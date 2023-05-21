@@ -86,7 +86,7 @@ class SignUp extends StatelessWidget {
          const SizedBox(height: 10,),
                        CustomButtomAuth(text: "14".tr, onPressed :() {
                 controller.SignUp();
-                controller.goToHomePage();
+                controller.gotosuccesssignup();
                  controller.isBlur.value = true;
               }),
               SocialMedia(),

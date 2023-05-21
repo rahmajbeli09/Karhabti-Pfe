@@ -4,6 +4,8 @@ import 'package:karhabti_pfe/view/widget/home/horizontalcontainer.dart';
 import 'package:karhabti_pfe/view/widget/home/nomet%20prenomcontainer.dart';
 import 'package:karhabti_pfe/view/widget/home/verticalcontainer.dart';
 import '../../../../../controller/client/homepagecontroller.dart';
+import '../../../../../controller/client/panneController.dart';
+import '../panne/map.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,6 +13,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomePageControllerImp controller = Get.put(HomePageControllerImp());
+    PanneControllerImp controller1 = Get.put(PanneControllerImp());
+
+    
     return Scaffold(
       body: ListView(
         children: [
@@ -20,19 +25,18 @@ class HomePage extends StatelessWidget {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(children: [
-                 InkWell(child:HorizontalContainer(image: "assets/images/mecanicien.png", text: "cherchez-vous\nun mecanicien?")),
-                InkWell(child: HorizontalContainer(image: "assets/images/elect.png", text: "cherchez-vous\nun electricien?")),
-                 InkWell(child:HorizontalContainer(image: "assets/images/tolier.png", text: "cherchez-vous \nun tolier?")),
-                 InkWell(child:HorizontalContainer(image: "assets/images/pneu.png", text: "cherchez-vous \nun technicien\nen pneumatique?")),
-                 InkWell(child:HorizontalContainer(image: "assets/images/vitrage.png", text: "cherchez-vous \nun technicen \nen vitrage?")),
-                 InkWell(child:HorizontalContainer(image: "assets/images/climatisation.png", text: "cherchez-vous\nun technicien\nen climatisation?")),
-                InkWell(child: HorizontalContainer(image: "assets/images/lavage.png", text: "cherchez-vous\nun lavage?")),
-
+                 InkWell(child:HorizontalContainer(image: "assets/images/mecanicien.png", text: "36".tr) , onTap: (){controller1.goToLoc();},),
+                 InkWell(child: HorizontalContainer(image: "assets/images/elect.png", text: "37".tr),  onTap: (){controller1.goToLoc();}),
+                 InkWell(child:HorizontalContainer(image: "assets/images/tolier.png", text: "38".tr), onTap: (){controller1.goToLoc();}),
+                 InkWell(child:HorizontalContainer(image: "assets/images/pneu.png", text: "39".tr), onTap: (){controller1.goToLoc();}),
+                 InkWell(child:HorizontalContainer(image: "assets/images/vitrage.png", text: "40".tr), onTap: (){controller1.goToLoc();}),
+                 InkWell(child:HorizontalContainer(image: "assets/images/climatisation.png", text: "41".tr), onTap: (){controller1.goToLoc();}),
+                 InkWell(child: HorizontalContainer(image: "assets/images/lavage.png", text: "42".tr), onTap: (){controller1.goToLoc();}),
                 ],),
               ),
-            InkWell(child: VerticalContainer(image: "assets/images/panne.png", text: "Votre Voiture est-il en panne?"),onTap: (){controller.goToPanne();},),
-            InkWell(child: VerticalContainer(image: "assets/images/frais.png", text: "Consultez les dates d'échéance de vos papiers"),onTap: (){controller.goToFrais();}),            
-            InkWell(child: VerticalContainer(image: "assets/images/venach.png", text: "Cherchez-vous des pièces de rechange ? \n Avez-vous des pièces de rechange à vendre?"),onTap: (){controller.goToVenteAchat();}),
+            InkWell(child: VerticalContainer(image: "assets/images/panne.png", text: "43".tr),onTap: (){controller.goToPanne();},),
+            InkWell(child: VerticalContainer(image: "assets/images/frais.png", text: "44".tr),onTap: (){controller.goToFrais();}),            
+            InkWell(child: VerticalContainer(image: "assets/images/venach.png", text: "45".tr),onTap: (){controller.goToVenteAchat();}),
           ]),
         ]
       ),
