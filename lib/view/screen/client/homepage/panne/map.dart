@@ -107,6 +107,7 @@ class MapPage extends StatelessWidget {
           children: [
             Obx(
               () => GoogleMap(
+                mapType: MapType.hybrid,
                 markers: controller.myMarker.value,
                 initialCameraPosition: controller.kGooglePlex.value,
               ),

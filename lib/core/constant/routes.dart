@@ -28,8 +28,16 @@ class AppRoute{
   static const String profillisttech="/profillisttech";
   static const String messagepanne="/messagepanne";
   static const String verifycode="/verifycode";
+  static const String verifycodetech="/verifycodetech";
   static const String forgetPassword="/forgetPassword";
+  static const String forgetPasswordtech="/forgetPasswordtech";
   static const String resetPassword="/resetPassword";
+  static const String resetPasswordtech="/resetPasswordtech";
+  static const String successresetPassword="/successresetPassword";
+  static const String successresetPasswordTech="/successresetPasswordTech";
+  static const String successSignUp="/successSignUp";
+  static const String successSignUptech="/successSignUptech";
+
 
 
 

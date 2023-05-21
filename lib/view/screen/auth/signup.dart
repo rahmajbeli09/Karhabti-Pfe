@@ -110,7 +110,7 @@ class SignUp extends StatelessWidget { //It means that it does not have any muta
                 );
                 AuthController.instance.createUser(user);
                 controller.SignUp();
-                controller.goToHomePage();
+                controller.gotosuccesssignup();
                  controller.isBlur.value = true;
               }),
               SocialMedia(),

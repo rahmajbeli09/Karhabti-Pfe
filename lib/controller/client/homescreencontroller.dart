@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/history.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/messages.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/notification.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/profil.dart';
@@ -18,7 +17,6 @@ class HomeScreenControllerImp extends HomeScreenController{
     HomePage(),
     Profil(),
     Messages(),
-    History(),
     Notifications(info: '',),
   ];
 

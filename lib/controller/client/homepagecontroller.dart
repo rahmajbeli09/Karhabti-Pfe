@@ -5,6 +5,7 @@ abstract class HomePageController extends GetxController{
 goToPanne();
 goToVenteAchat();
 goToFrais();
+goToLoc();
 
 }
 class  HomePageControllerImp extends  HomePageController {
@@ -22,6 +23,15 @@ class  HomePageControllerImp extends  HomePageController {
   @override
   goToFrais() {
     Get.toNamed(AppRoute.frais);
+  }
+  
+  void gotolist(String t) {
+      Get.toNamed(AppRoute.liste);
+  }
+  
+  @override
+  goToLoc() {
+    Get.toNamed(AppRoute.adresse);
   }
   
   

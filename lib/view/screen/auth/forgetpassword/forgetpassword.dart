@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/auth/forgetpasswordcontroller.dart';
 import 'package:karhabti_pfe/core/function/alertexitapp.dart';
-import '../../widget/auth/custombuttonauth.dart';
-import '../../widget/auth/customtextbodyauth.dart';
-import '../../widget/auth/customtextformauth.dart';
-import '../../widget/auth/customtexttitleauth.dart';
+import '../../../widget/auth/custombuttonauth.dart';
+import '../../../widget/auth/customtextbodyauth.dart';
+import '../../../widget/auth/customtextformauth.dart';
+import '../../../widget/auth/customtexttitleauth.dart';
 // ignore: must_be_immutable
 class ForgetPassword extends StatelessWidget {
    ForgetPassword({Key? key}) : super(key: key);

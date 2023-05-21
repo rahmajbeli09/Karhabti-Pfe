@@ -21,6 +21,9 @@ class CustomTextfieldAuth extends StatelessWidget {
         child: TextFormField(
           obscureText: obscureText == null || obscureText == false ? false : true,
           decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.amber),
+  ),
             labelText: labelText,
             labelStyle: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 131, 127, 127) ,fontFamily: "Comfortaa",fontWeight: FontWeight.w800) ,
               hintText: hinttext,

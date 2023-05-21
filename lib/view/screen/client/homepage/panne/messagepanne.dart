@@ -4,6 +4,7 @@ import 'package:karhabti_pfe/view/widget/boutton.dart';
 
 class RobotController extends GetxController {
 var conversation = "".obs;
+// ignore: unused_field
 var _repclient = ["oui", "non", "merci"];
 var _reprobotelect = [
 "Avez-vous remarqué une baisse de la puissance de la batterie récemment ?",
@@ -67,9 +68,6 @@ void askQuestion() {
     conversation.value += question + "\n";
   }
 }
-
-
-
 
 void answerQuestion(String answer) {
 conversation.value += answer + "\n";
@@ -234,11 +232,11 @@ class RobotScreen extends StatelessWidget {
                     
                     Column(
                       children: [
-      Boutton(text: "oui", color: Colors.amber , onPressed: () => robotController.answerQuestion("oui"),),
+      Boutton(text: "oui", color: Colors.white , onPressed: () => robotController.answerQuestion("oui"),),
       SizedBox(width: 14),
-      Boutton(text: "Non", color: Colors.amber , onPressed: () => robotController.answerQuestion("non"),),
+      Boutton(text: "Non", color: Colors.white , onPressed: () => robotController.answerQuestion("non"),),
       SizedBox(width: 14),
-      Boutton(text: "Merci", color: Colors.amber , onPressed: () => robotController.answerQuestion("merci"),
+      Boutton(text: "Merci", color: Colors.white , onPressed: () => robotController.answerQuestion("merci"),
 )
       ],
       ),

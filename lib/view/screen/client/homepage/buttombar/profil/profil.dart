@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:karhabti_pfe/controller/client/rendezvouscontroller.dart';
+import 'package:karhabti_pfe/controller/client/profilcontroller.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
 import 'package:karhabti_pfe/view/widget/home/nomet%20prenomcontainer.dart';
 import 'package:karhabti_pfe/view/widget/home/profilcontainer.dart';
@@ -9,7 +9,7 @@ import 'package:karhabti_pfe/view/widget/home/profilcontainer.dart';
 // ignore: must_be_immutable
 class Profil extends StatelessWidget {
    Profil({Key? key}) : super(key: key);
-  RendezVousControllerImp controller = Get.put(RendezVousControllerImp());
+  ProfilControllerImp controller = Get.put(ProfilControllerImp());
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +45,7 @@ class Profil extends StatelessWidget {
                 },
                 ),
 
-                Container(
-                  margin: EdgeInsets.only(left: 220),
-                  child: Row(children: [
-                    Text("Déconnexion") , 
-                    IconButton(onPressed: (){}, icon: Icon(Icons.logout_outlined)),
-                  ],),
-                ),
+                
             ],
           ),
         ],

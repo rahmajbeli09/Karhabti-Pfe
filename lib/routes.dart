@@ -1,12 +1,19 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
-import 'package:karhabti_pfe/view/screen/auth/forgetpassword.dart';
+import 'package:karhabti_pfe/view/screen/auth/forgetpassword/forgetpassword.dart';
+import 'package:karhabti_pfe/view/screen/auth/forgetpassword/forgetpasswordtech.dart';
+import 'package:karhabti_pfe/view/screen/auth/forgetpassword/resetpasswordtech.dart';
+import 'package:karhabti_pfe/view/screen/auth/forgetpassword/successresetpasswordtech.dart';
+import 'package:karhabti_pfe/view/screen/auth/forgetpassword/verifycodetech.dart';
 import 'package:karhabti_pfe/view/screen/auth/login.dart';
 import 'package:karhabti_pfe/view/screen/auth/logintech.dart';
-import 'package:karhabti_pfe/view/screen/auth/resetpassword.dart';
+import 'package:karhabti_pfe/view/screen/auth/forgetpassword/resetpassword.dart';
 import 'package:karhabti_pfe/view/screen/auth/signup.dart';
 import 'package:karhabti_pfe/view/screen/annonces.dart';
-import 'package:karhabti_pfe/view/screen/auth/verifycode.dart';
+import 'package:karhabti_pfe/view/screen/auth/forgetpassword/successResetPassword.dart';
+import 'package:karhabti_pfe/view/screen/auth/successSignUp.dart';
+import 'package:karhabti_pfe/view/screen/auth/successsignuptech.dart';
+import 'package:karhabti_pfe/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/editprofil.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/profil/rendez-vous.dart';
 import 'package:karhabti_pfe/view/screen/client/homepage/buttombar/homepage.dart';
@@ -25,10 +32,10 @@ import 'package:karhabti_pfe/view/screen/technicien/home/hometechscreen.dart';
 import 'package:karhabti_pfe/view/screen/technicien/home/rendezvoustech.dart';
 import 'package:karhabti_pfe/view/screen/technicien/onboarding2.dart';
 import 'package:karhabti_pfe/view/screen/technicien/signuporlogin2.dart';
-import 'package:karhabti_pfe/view/screen/client/homepage/venach/venteachat.dart';
+import 'package:karhabti_pfe/view/screen/venach/venteachat.dart';
 import 'view/screen/auth/signuptech.dart';
 import 'view/screen/client/homepage/panne/map.dart';
-import 'view/screen/client/homepage/venach/postulation.dart';
+import 'view/screen/venach/postulation.dart';
 import 'view/screen/technicien/home/buttombar/hometechpage.dart';
 import 'view/screen/client/signuporligin.dart';
 List<GetPage<dynamic>>? routes = [
@@ -51,7 +58,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.edit, page: ()=>UserProfilePage()),
   GetPage(name: AppRoute.map, page: ()=>MapPage()),
   GetPage(name: AppRoute.maptech, page: ()=>MapTech()),
-  GetPage(name: AppRoute.rendezvous, page: ()=>RendezVous()),
+  GetPage(name: AppRoute.rendezvous, page: ()=>Calendrier()),
   GetPage(name: AppRoute.annonces, page: ()=>Annonces()),
   GetPage(name: AppRoute.edittechprofil, page: ()=>EditTechProfil()),
   GetPage(name: AppRoute.adresse, page: ()=>Adresse()),
@@ -61,10 +68,13 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.profillisttech, page: ()=>ProfilListTech()),
   GetPage(name: AppRoute.messagepanne, page: ()=>RobotScreen()),
   GetPage(name: AppRoute.forgetPassword, page: ()=>ForgetPassword()),
+  GetPage(name: AppRoute.forgetPasswordtech, page: ()=>ForgetPasswordTech()),
   GetPage(name: AppRoute.resetPassword, page: ()=>ResetPassword()),
+  GetPage(name: AppRoute.resetPasswordtech, page: ()=>ResetPasswordTech()),
   GetPage(name: AppRoute.verifycode, page: ()=>VerifyCode()),
-  
- 
-
-
+  GetPage(name: AppRoute.verifycodetech, page: ()=>VerifyCodeTech()),
+  GetPage(name: AppRoute.successSignUp, page: ()=>SuccessSignUp()),
+  GetPage(name: AppRoute.successSignUptech, page: ()=>SuccessSignUpTech()),
+  GetPage(name: AppRoute.successresetPassword, page: ()=>SuccessResetPassword()),
+  GetPage(name: AppRoute.successresetPasswordTech, page: ()=>SuccessResetPasswordTech()),
 ];

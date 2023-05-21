@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton:  FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 255, 203, 30),
         onPressed:(){
-          controller.changePage(4);
+          controller.changePage(3);
         } ,
         child: Icon(Icons.notifications ,) ,
       ),

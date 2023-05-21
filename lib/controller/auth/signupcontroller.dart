@@ -7,7 +7,8 @@ abstract class SignUpController extends GetxController{
 
   SignUp();
   
-  goToHomePage();
+  gotosuccesssignup();
+  goToHome();
 }
 
 class SignUpControllerImp extends SignUpController{
@@ -58,7 +59,12 @@ class SignUpControllerImp extends SignUpController{
   }
   
   @override
-  goToHomePage() {
-    Get.offAllNamed(AppRoute.homescreen);
+  gotosuccesssignup() {
+    Get.offAllNamed(AppRoute.successSignUp);
   }
+  
+  @override
+  goToHome() {
+    Get.offAllNamed(AppRoute.homescreen);
+}
 }

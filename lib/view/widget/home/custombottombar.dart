@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/client/homescreencontroller.dart';
+import 'package:karhabti_pfe/core/constant/routes.dart';
+import 'package:karhabti_pfe/view/screen/areyou.dart';
 
 import 'buttombar.dart';
 
@@ -21,7 +23,7 @@ class CustomBottomBar extends GetView<HomeScreenControllerImp> {
           controller.changePage(0);
         },
         icon: Icons.home,
-        text: "home",
+        text: "46".tr,
         active: controller.currentPage == 0? true : false,
       ),
                   ButtomBar(
@@ -29,7 +31,7 @@ class CustomBottomBar extends GetView<HomeScreenControllerImp> {
           controller.changePage(1);
         },
         icon: Icons.person,
-        text: "profil",
+        text: "47".tr,
         active: controller.currentPage == 1? true : false,
       ),
                 ],
@@ -42,16 +44,16 @@ class CustomBottomBar extends GetView<HomeScreenControllerImp> {
           controller.changePage(2);
         },
         icon: Icons.message,
-        text: "messagerie",
+        text: "48".tr,
         active: controller.currentPage == 2? true : false,
       ),
                   ButtomBar(
         onPressed: (){
-          controller.changePage(3);
+          Get.offAll(AreYou());
         },
-        icon: Icons.history,
-        text: "historique",
-        active: controller.currentPage == 3? true : false,
+        icon: Icons.logout,
+        text: "Log out", 
+        active: null,
       ),
                 ],
               ),

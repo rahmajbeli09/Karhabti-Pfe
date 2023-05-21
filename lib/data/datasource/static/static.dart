@@ -17,27 +17,27 @@ List<OnBordingModel> onBoardingList =[
   
   OnBordingModel(
     image: ImageAsset.onBoardingImageTwo, 
-    title: "Bienvenue dans l'univers de l'achat et la vente",
-    body: "Notre interface simple et intuitive vous permettra de trouver rapidement les pièces dont vous avez besoin ou de vendre celles que vous n'utilisez plus."
+    title: "27".tr,
+    body: "28".tr
      )
 
 ];
 List<OnBordingModel> onBoardingList1 =[
   OnBordingModel(
     image: ImageAsset.image21 , 
-    title: "Augmentez votre chiffre d'affaires",
-    body: "Accéder à une énorme communauté de clients en recherche de techniciens qualifiés. Boostez votre activité et augmentez vos revenus ",
+    title: "29".tr,
+    body: "30".tr,
      ),
   OnBordingModel(
     image: ImageAsset.image22 , 
-    title: "Gagnez du temps",
-    body: "Planifiez vos rendez-vous avec facilité grâce à notre application mobile."
+    title: "31".tr,
+    body: "32".tr
      ),     
   
   OnBordingModel(
     image: ImageAsset.onBoardingImageTwo, 
-    title: "Bienvenue dans l'univers de l'achat et la vente",
-    body: "Notre interface simple et intuitive vous permettra de trouver rapidement les pièces dont vous avez besoin ou de vendre celles que vous n'utilisez plus."
+    title: "27".tr,
+    body: "28".tr
      )
 
 ];

@@ -6,7 +6,8 @@ import 'package:karhabti_pfe/core/constant/routes.dart';
 abstract class SignUpTechController extends GetxController{
   SignUp();
   goToSignUp();
-  goToHomePage();
+  goToHomePageTech();
+  gotosuccesssignup();
 }
 
 class SignUpTechControllerImp extends SignUpTechController{
@@ -63,11 +64,16 @@ class SignUpTechControllerImp extends SignUpTechController{
   }
   
   @override
-  goToHomePage() {
+  goToHomePageTech() {
     Get.offAllNamed(AppRoute.homescreentech);
   }
   void updateSelectedOption(String newOption) {
     
     selectedOption.value = newOption;
+  }
+  
+  @override
+  gotosuccesssignup() {
+    Get.offAllNamed(AppRoute.successSignUptech);
   }
 }

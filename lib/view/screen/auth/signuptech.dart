@@ -141,7 +141,7 @@ class SignUpTech extends StatelessWidget {
                      );
                      AuthController.instance.createTech(user);
                                  controller.SignUp();
-                                 controller.goToHomePage();
+                                 controller.goToHomePageTech();
                                }),
                                SocialMedia()
                       
