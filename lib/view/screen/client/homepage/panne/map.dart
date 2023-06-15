@@ -7,6 +7,7 @@ import 'package:karhabti_pfe/core/constant/routes.dart';
 import 'package:karhabti_pfe/repository/user_repository/tech_repository.dart';
 
 import '../../../../../services/tech_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MapController extends GetxController {
   final myMarker = Set<Marker>().obs;
@@ -15,86 +16,110 @@ class MapController extends GetxController {
     zoom: 17.4746,
   ).obs;
   final techRepo = Get.put(TechRepository());
-  final BitmapDescriptor blueMarkerIcon = BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue);
+  final BitmapDescriptor blueMarkerIcon =
+      BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue);
 
+  Future<void> getPosition() async {
+    await Geolocator.checkPermission();
+    await Geolocator.requestPermission();
 
+    final cl = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
 
-Future<void> getPosition() async {
-  await Geolocator.checkPermission();
-  await Geolocator.requestPermission();
+    // Add your location as a marker
+    myMarker.add(
+      Marker(
+        markerId: MarkerId("MyLocation"),
+        position: LatLng(cl.latitude, cl.longitude),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+      ),
+    );
 
-  final cl = await Geolocator.getCurrentPosition(
-    desiredAccuracy: LocationAccuracy.high,
-  );
-  kGooglePlex.value = CameraPosition(
-    target: LatLng(cl.latitude, cl.longitude),
-    zoom: 17.4746,
-  );
-}
-
-
-  // void goToList() {
-  //   Get.toNamed(AppRoute.liste);
-  // }
-
-Future<void> changeMarker(double newLat, double newLong) async {
-  myMarker.remove(Marker(markerId: MarkerId("1")));
-  myMarker.add(
-    Marker(
-      markerId: MarkerId("1"),
-      position: LatLng(newLat, newLong),
-    ),
-  );
-  kGooglePlex.value = CameraPosition(
-    target: LatLng(newLat, newLong),
-    zoom: kGooglePlex.value.zoom,
-  );
-}
-
+    kGooglePlex.value = CameraPosition(
+      target: LatLng(cl.latitude, cl.longitude),
+      zoom: 15.4746,
+    );
+  }
 
   void fetchTechnicianLocations() async {
     List<TechModel> users = await techRepo.fetchTechnicianLocations();
-    myMarker.value = users.map((user) {
-      return Marker(
-        markerId: MarkerId(user.id ?? ''),
-        position: LatLng(user.latitude, user.longitude),
-        icon: blueMarkerIcon,
-        onTap: () {
-          showTechnicianInfo(user);
-        },
+
+    // Clear the existing markers except the user's location marker
+    myMarker.removeWhere((marker) => marker.markerId.value != "MyLocation");
+
+    // Add technician's locations as markers
+    users.forEach((user) {
+      myMarker.add(
+        Marker(
+          markerId: MarkerId(user.id ?? ''),
+          position: LatLng(user.latitude, user.longitude),
+          icon: blueMarkerIcon,
+          onTap: () {
+            showTechnicianInfo(user);
+          },
+        ),
       );
-    }).toSet();
+    });
   }
-  void showTechnicianInfo(TechModel user) { //hedhi bech talla3lek les informations mtaa technicien fi container 
-      print("Showing technician info: ${user.fullname}");
-     showDialog(
+
+  void showTechnicianInfo(TechModel user) {
+    print("Showing technician info: ${user.fullname}");
+    showDialog(
       context: Get.context!,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Technician Information'),
+          title: Text('Informations concernant ce technicien'),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Name: ${user.fullname}'),
-              Text('Phone: ${user.phoneNumber}'),
-              // Text('Email: ${user.email}'),
+              Text('Nom: ${user.fullname}'),
+              Text('Numéro de téléphone: ${user.phoneNumber}'),
+              Text('Role: ${user.role ?? "N/A"}'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      _makePhoneCall(user.phoneNumber);
+                    },
+                    style: TextButton.styleFrom(primary: Colors.yellow),
+                    child: Text('Appeler'),
+                  ),
+                  SizedBox(width: 8),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: TextButton.styleFrom(primary: Colors.yellow),
+                    child: Text('Close'),
+                  ),
+                ],
+              ),
             ],
           ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Close'),
-            ),
-          ],
         );
       },
     );
   }
-}
 
+  void _makePhoneCall(String phoneNumber) async {
+    if (await canLaunch('tel:$phoneNumber')) {
+      await launch('tel:$phoneNumber');
+    } else {
+      Fluttertoast.showToast(
+        msg: "Impossible de passer l'appel",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+  }
+}
 
 class MapPage extends StatelessWidget {
   final controller = Get.put(MapController());

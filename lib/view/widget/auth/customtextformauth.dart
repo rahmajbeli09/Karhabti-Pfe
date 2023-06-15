@@ -4,39 +4,48 @@ class CustomTextFormAuth extends StatelessWidget {
   final String hinttext;
   final IconData iconData;
   final TextEditingController? mycontroller;
-  final bool? obscureText ;
+  final bool? obscureText;
   final void Function()? onTapIcon;
-  const CustomTextFormAuth(
-      {Key? key,
-      this.onTapIcon,
-      required this.hinttext,
-      required this.iconData,
-      required this.mycontroller,
-       this.obscureText,})
-      : super(key: key);
+  final String? Function(String?)? validator; // Add the validator parameter here
+
+  const CustomTextFormAuth({
+    Key? key,
+    this.onTapIcon,
+    required this.hinttext,
+    required this.iconData,
+    required this.mycontroller,
+    this.obscureText,
+    this.validator, // Pass the validator parameter to the constructor
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        margin:const  EdgeInsets.only(bottom: 15),
-        child: TextFormField(
-          controller: mycontroller,
-          obscureText: obscureText == null || obscureText == false ? false : true,
-          decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color.fromARGB(255, 33, 32, 30)),
-  ),
-              hintText: hinttext,
-              hintStyle: const TextStyle(fontSize: 14, color: Color.fromARGB(255, 131, 127, 127) ,fontFamily: "Comfortaa",fontWeight: FontWeight.w800) ,
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              contentPadding:
-              const EdgeInsets.symmetric(vertical:20, horizontal: 20),
-              
-              suffixIcon:InkWell(child:  Icon(iconData , color: Color.fromARGB(255, 131, 127, 127),), onDoubleTap:onTapIcon ,),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(14) ) ,),
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15),
+      child: TextFormField(
+        controller: mycontroller,
+        obscureText: obscureText == null || obscureText == false ? false : true,
+        decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color.fromARGB(255, 33, 32, 30)),
+          ),
+          hintText: hinttext,
+          hintStyle: const TextStyle(
+            fontSize: 14,
+            color: Color.fromARGB(255, 131, 127, 127),
+            fontFamily: "Comfortaa",
+            fontWeight: FontWeight.w800,
+          ),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          suffixIcon: InkWell(
+            child: Icon(iconData, color: Color.fromARGB(255, 131, 127, 127)),
+            onDoubleTap: onTapIcon,
+          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
         ),
-      
+        validator: validator, // Pass the validator parameter to the TextFormField
+      ),
     );
   }
 }

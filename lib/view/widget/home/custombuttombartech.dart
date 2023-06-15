@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/view/widget/home/buttombartech.dart';
+import '../../../controller/auth/authcontroller.dart';
 import '../../../controller/technicien/homescreentechcontroller.dart';
 
 class CustomBottomBarTech extends GetView<HomeScreenTechControllerImp> {
@@ -41,17 +42,18 @@ class CustomBottomBarTech extends GetView<HomeScreenTechControllerImp> {
           controller.changePage(2);
         },
         icon: Icons.message,
-        text: "messagerie",
+        text: "reclamation",
         active: controller.currentPage == 2? true : false,
       ),
-                  ButtomBarTech(
-        onPressed: (){
-          controller.changePage(3);
-        },
-        icon: Icons.history,
-        text: "historique",
-        active: controller.currentPage == 3? true : false,
-      ),
+              ButtomBarTech(
+                onPressed: () {
+                  AuthController authController = Get.find<AuthController>();
+                  authController.LogOut(); // Call the LogOut() method from AuthController
+                },
+                icon: Icons.logout,
+                text: "Log out",
+                active: null,
+              ),
                 ],
               ),
 

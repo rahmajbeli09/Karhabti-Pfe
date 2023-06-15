@@ -10,31 +10,49 @@ class UserRepository extends GetxController {
   final _db = FirebaseFirestore.instance;
 final authController = Get.find<AuthController>;
   Future<void> createUser(UserModel user) async {
-   await  _db.collection("Users").add(user.toJson()).whenComplete(() {
-     Get.snackbar(
-          "success !",
-          "your account has been created",
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.green.withOpacity(0.1),
-          colorText: Colors.green,
-        );
-   }
-        ).catchError((error, StackTrace) {
-      Get.snackbar(
-        "error",
-        "Something went wrong. Try again",
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.red,
-      );
-      print(error.toString());
-    });
-  }
+  final hashedPassword = UserModel.hashPassword(user.password);
+
+  await _db.collection("Users").add({
+    ...user.toJson(),
+    "password": hashedPassword,
+  }).then((_) {
+    Get.snackbar(
+      "Success!",
+      "Your account has been created",
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.green.withOpacity(0.1),
+      colorText: Colors.green,
+    );
+  }).catchError((error) {
+    Get.snackbar(
+      "Error",
+      "Something went wrong. Try again",
+      backgroundColor: Colors.redAccent.withOpacity(0.1),
+      colorText: Colors.red,
+    );
+    print(error.toString());
+  });
+}
+
 //step 2: fetch user
 Future<UserModel>getUserDetails(String email) async {
   final snapshot = await _db.collection("Users").where("email", isEqualTo: email).get();
   final user = snapshot.docs.map((e) => UserModel.fromSnapshot(e)).single;
     return user ;
   
+  }
+  
+  // Fetches the profile picture URL for the user with the given email
+  Future<String?> getUserProfilePictureURL(String email) async {
+    final snapshot =
+        await _db.collection("Users").where("email", isEqualTo: email).get();
+
+    if (snapshot.docs.isNotEmpty) {
+      final user = UserModel.fromSnapshot(snapshot.docs.first);
+      return user.imageURL;
+    } else {
+      return null;
+    }
   }
 
 

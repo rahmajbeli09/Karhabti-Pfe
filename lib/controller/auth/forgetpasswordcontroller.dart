@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
 
+
 abstract class ForgetPasswordController extends GetxController{
  
   checkemail();

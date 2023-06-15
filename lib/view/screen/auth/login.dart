@@ -5,7 +5,6 @@ import 'package:karhabti_pfe/core/function/alertexitapp.dart';
 import 'package:karhabti_pfe/view/widget/auth/customtextbodyauth.dart';
 import 'package:karhabti_pfe/view/widget/auth/socialmedia.dart';
 import 'package:karhabti_pfe/view/widget/auth/textsignuporsignin.dart';
-
 import '../../../controller/auth/authcontroller.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextformauth.dart';
@@ -13,6 +12,7 @@ import '../../widget/auth/customtexttitleauth.dart';
 class Login extends StatelessWidget { 
   const Login({Key? key}) : super(key: key);
   //bool inLoginProcess= false;
+  
   @override
   Widget build(BuildContext context) {
     LoginControllerImp controller =Get.put(LoginControllerImp());
@@ -73,13 +73,13 @@ class Login extends StatelessWidget {
                       onTap: (){
                         controller.goToSignUp();
                       },),
-                       CustomButtomAuth(text: "13".tr, onPressed :() {
+                       CustomButtomAuth(text: "13".tr, onPressed :() async {
                          AuthController.instance.login(controller.email.text.trim(), controller.password.text.trim());
                         controller.login();
 
-                       
+                                                
                        }),
-                       SocialMedia()
+                      //  SocialMedia()
                         ],
                       ),
                     ),

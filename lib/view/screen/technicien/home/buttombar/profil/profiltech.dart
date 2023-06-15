@@ -4,6 +4,8 @@ import 'package:karhabti_pfe/controller/technicien/profiltechcontroller.dart';
 import 'package:karhabti_pfe/view/widget/home/nomet%20prenomcontainer.dart';
 import 'package:karhabti_pfe/view/widget/home/profilcontainer.dart';
 
+import '../../../../../widget/home/techphoto.dart';
+
 // ignore: must_be_immutable
 class ProfilTech extends StatelessWidget {
    ProfilTech({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class ProfilTech extends StatelessWidget {
         children: [
           Column(
             children: [
-              NomEtPrenomContainer(),
+              TechnicianContainer(),
               SizedBox(height: 50,),
               ProfilContainer(
                 icon: Icons.face, 

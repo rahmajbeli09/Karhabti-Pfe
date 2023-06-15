@@ -38,6 +38,8 @@ class AppRoute{
   static const String successSignUp="/successSignUp";
   static const String successSignUptech="/successSignUptech";
 
+  static var piece;
+
 
 
 

@@ -12,10 +12,12 @@ class TechRepository extends GetxController {
 
    Future<void> createTech(TechModel user) async {
   final userJson = user.toJson();
+    final hashedPassword = TechModel.hashPassword(user.password);
 
-  // Set the document ID to be the same as the Firebase Auth UID of the user
- await  _db.collection("Techniciens").add(user.toJson()).whenComplete(() {
-
+  await _db.collection("Techniciens").add({
+    ...user.toJson(),
+    "password": hashedPassword,
+  }).then((_) {
     Get.snackbar(
       "Success!",
       "Your account has been created",
@@ -23,7 +25,16 @@ class TechRepository extends GetxController {
       backgroundColor: Colors.green.withOpacity(0.1),
       colorText: Colors.green,
     );
+  }).catchError((error) {
+    Get.snackbar(
+      "Error",
+      "Something went wrong. Try again",
+      backgroundColor: Colors.redAccent.withOpacity(0.1),
+      colorText: Colors.red,
+    );
+    print(error.toString());
   });
+
 }
 
 //step 2: fetch user
@@ -58,6 +69,19 @@ Future<TechModel>getUserDetails(String email) async {
     );
   }
 }
+  Future<TechModel?> getUserDetailss(String email) async {
+    final snapshot =
+        await _db.collection("Techniciens").where("email", isEqualTo: email).get();
+
+    if (snapshot.docs.isNotEmpty) {
+      final tech = TechModel.fromSnapshot(snapshot.docs.first);
+      print("tech details passed ");
+      return tech;
+    } else {
+      print("mochkla tech");
+      return null;
+    }
+  }
   getTechByEmail(String? email) {}
 
 Future<void> updateTechnicienLocation(String id, String email, double latitude, double longitude) async {
@@ -76,6 +100,18 @@ if (email != null) {
 
    
   }
+    // Fetches the profile picture URL for the user with the given email
+  Future<String?> getUserProfilePictureURL(String email) async {
+    final snapshot =
+        await _db.collection("Techniciens").where("email", isEqualTo: email).get();
+
+    if (snapshot.docs.isNotEmpty) {
+      final user = TechModel.fromSnapshot(snapshot.docs.first);
+      return user.imageURL;
+    } else {
+      return null;
+    }
+  }
 Future<List<TechModel>> fetchTechnicianLocations() async {
   final snapshot = await _db.collection("Techniciens").get();
 
@@ -91,7 +127,20 @@ Future<List<TechModel>> fetchTechnicianLocations() async {
 
   return techniciansWithLocation;
 }
+//this method was created to retrive the user details to link the frais collection with the users
+  Future<TechModel?> getUserDetaiil(String email) async {
+    final snapshot =
+        await _db.collection("Techniciens").where("email", isEqualTo: email).get();
 
+    if (snapshot.docs.isNotEmpty) {
+      final user = TechModel.fromSnapshot(snapshot.docs.first);
+      print("user details passed ");
+      return user;
+    } else {
+      print("mochkla f techrep");
+      return null;
+    }
+  }
 
   
 }

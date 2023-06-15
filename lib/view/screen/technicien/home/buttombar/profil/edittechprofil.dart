@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../controller/technicien/profiltechcontroller.dart';
+import 'package:karhabti_pfe/controller/client/editprofilcntroller.dart';
+import 'package:karhabti_pfe/controller/technicien/profiltechcontroller.dart';
+import 'package:karhabti_pfe/services/user_model.dart';
 import '../../../../../../services/tech_model.dart';
 import '../../../../../widget/boutton.dart';
 
 class EditTechProfil extends StatelessWidget {
-final controllerr = Get.put(ProfilTechControllerImp());
+  final controllerr = Get.put(EditController());
 
-   EditTechProfil({Key? key}) : super(key: key);
+  EditTechProfil({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final controllerr = Get.put(ProfilTechControllerImp());
+ 
+    final controlleer = Get.put(ProfilTechControllerImp());
 
     return Scaffold(
       appBar: AppBar(
@@ -24,12 +27,13 @@ final controllerr = Get.put(ProfilTechControllerImp());
         ),
         centerTitle: true,
         title: Text(
-          'Trouver un expert',
+          'Modifier vos données personnelles',
           style: TextStyle(
             color: Colors.black,
             fontFamily: "Comfortaa",
             fontWeight: FontWeight.bold,
-            fontSize: 18),
+            fontSize: 18,
+          ),
         ),
         elevation: 0,
         backgroundColor: Colors.white.withAlpha(0),
@@ -39,17 +43,49 @@ final controllerr = Get.put(ProfilTechControllerImp());
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/profil.png',
-              height: 100,
-              width: 100,
+            FutureBuilder(
+              future: controlleer.getUserData(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                   TechModel user = snapshot.data as TechModel;
+                    return Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: NetworkImage(user.imageURL ?? ''),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  } else {
+                    return Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey,
+                      ),
+                    );
+                  }
+                }
+                return Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey,
+                  ),
+                );
+              },
             ),
             SizedBox(height: 40),
-            Expanded(
-            child :Container(
-              
+            Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+              height: 400, // Adjust the height as desired
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -62,109 +98,113 @@ final controllerr = Get.put(ProfilTechControllerImp());
                   ),
                 ],
               ),
-child: FutureBuilder(
-  future: controllerr.getUserData(),
-  builder: (context, snapshot) {
-    print('futureBuilder snapshot: $snapshot');
-
-    if (snapshot.connectionState == ConnectionState.done) {
-      print("connected"); //means that the data is fetched
-      if (snapshot.hasData) {
-        print(snapshot.data);
-        print("snapshot worked");
-        TechModel user = snapshot.data as TechModel;
-        final email = TextEditingController(text: user.email);
-        final password = TextEditingController(text: user.password);
-        final phoneNumber = TextEditingController(text: user. phoneNumber);
-        final fullname = TextEditingController(text: user.fullname);
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 50,),
-              Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: fullname,
-                      decoration: InputDecoration(
-                        labelText: 'Full Name',
-                        prefixIcon: Icon(Icons.person),
-                      ),
-
-                    ),
-                    const SizedBox(height: 10,),
-                    TextFormField(
-                      controller: email,
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        prefixIcon: Icon(Icons.email),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      
-                    ),
-                    const SizedBox(height: 10,),
-                    TextFormField(
-                      controller: phoneNumber,
-                      decoration: InputDecoration(
-                        labelText: 'Phone number',
-                        prefixIcon: Icon(Icons.phone),
-                      ),
-                      keyboardType: TextInputType.phone,
-
-                    ),
-                    const SizedBox(height: 10,),
-                    TextFormField(
-                      controller: password,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        prefixIcon: Icon(Icons.lock),
-                      ),
-                      obscureText: true,
-
-                    ),
-                    
-                    const SizedBox(height: 20,),
-ElevatedButton(
-   onPressed: () async {
-    if (formKey.currentState!.validate()) {
-      TechModel updatedUser = TechModel(
-        id: user.id,
-        email: email.text,
-        fullname: fullname.text,
-        phoneNumber: phoneNumber.text,
-        password: password.text,
-      );
-      await controllerr.updateRecord(user.id!, updatedUser);
-      print('User data updated: $updatedUser');
-    }
-  },
-  child: Text('Save Changes'),
-)
-
-
-                  ],
-                ),
+              child: FutureBuilder(
+                future: controlleer.getUserData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
+                      TechModel user = snapshot.data as TechModel;
+                      final fullname =
+                          TextEditingController(text: user.fullname);
+                      final phoneNumber =
+                          TextEditingController(text: user.phoneNumber);
+                      return SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            Form(
+                              key: formKey,
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    controller: fullname,
+                                    decoration: InputDecoration(
+                                      labelText: 'Full Name',
+                                      prefixIcon: Icon(Icons.person),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  TextFormField(
+                                    controller: phoneNumber,
+                                    decoration: InputDecoration(
+                                      labelText: 'Phone number',
+                                      prefixIcon: Icon(Icons.phone),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                    keyboardType: TextInputType.phone,
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 50),
+                                      child: ElevatedButton.icon(
+                                        onPressed: () async {
+                                          if (formKey.currentState!.validate()) {
+                                            TechModel updatedUser = TechModel(
+                                              id: user.id,
+                                              email: user.email,
+                                              fullname: fullname.text,
+                                              phoneNumber: phoneNumber.text,
+                                              password: user.password,
+                                            );
+                                            await controlleer.updateRecord(
+                                                user.id!, updatedUser );
+                                            print(
+                                                'User data updated: $updatedUser');
+                                          }
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all<Color>(Colors.amber),
+                                          padding: MaterialStateProperty.all<EdgeInsets>(
+                                            EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                                          ),
+                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(30.0),
+                                            ),
+                                          ),
+                                        ),
+                                        icon: Icon(Icons.save),
+                                        label: Text(
+                                          'Enregistrer',
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else {
+                      return const Center(child: Text('No data available'));
+                    }
+                  }
+                  return const Center(child: CircularProgressIndicator());
+                },
               ),
-            ],
-          ),
-        );
-      } else {
-        return const Center(child: Text('No data available'));
-      }
-    }
-    // Handle other connection states here
-    return const Center(child: CircularProgressIndicator());
-  },
-),
-
-
-
             ),
-              ),
+            SizedBox(height: 20),
           ],
         ),
       ),
     );
   }
 }
+

@@ -5,6 +5,7 @@ import '../../../../controller/auth/verifycodecontroller.dart';
 import '../../../widget/auth/customtextbodyauth.dart';
 import '../../../widget/auth/customtexttitleauth.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+
 // ignore: must_be_immutable
 class VerifyCode extends StatelessWidget {
    VerifyCode({Key? key}) : super(key: key);

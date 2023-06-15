@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -5,20 +6,17 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:path_provider/path_provider.dart';
 import '../../../repository/user_repository/tech_repository.dart';
-import '../../../repository/user_repository/user_repository.dart';
 import '../../../services/tech_model.dart';
-import '../../../services/user_model.dart';
 
-class NomEtPrenomContainer extends StatefulWidget {
-  const NomEtPrenomContainer({Key? key}) : super(key: key);
+class TechnicianContainer extends StatefulWidget {
+  const TechnicianContainer({Key? key}) : super(key: key);
 
   @override
-  _NomEtPrenomContainerState createState() => _NomEtPrenomContainerState();
+  _TechnicianContainerState createState() => _TechnicianContainerState();
 }
 
-class _NomEtPrenomContainerState extends State<NomEtPrenomContainer> {
+class _TechnicianContainerState extends State<TechnicianContainer> {
   File? _imageFile;
   String? _imageURL;
   final ImagePicker _picker = ImagePicker();
@@ -41,28 +39,28 @@ class _NomEtPrenomContainerState extends State<NomEtPrenomContainer> {
       if (snapshot.state == TaskState.success) {
         String imageURL = await snapshot.ref.getDownloadURL();
 
-        final UserRepository userRepository = Get.put(UserRepository());
+        final TechRepository techRepository = Get.put(TechRepository());
         final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
         final User? currentUser = _firebaseAuth.currentUser;
         if (currentUser == null) {
-          print('User not found!');
+          print('User not found!!!');
           return;
         }
         final String userEmail = currentUser.email!;
 
-        final UserModel? user = await userRepository.getUserDetail(userEmail);
+        final TechModel? user = await techRepository.getUserDetaiil(userEmail);
         if (user == null) {
-          print('User not found!');
+          print('Technician not found!');
           return;
         }
 
         final String? userId = user.id;
 
-        final CollectionReference usersCollection =
-            FirebaseFirestore.instance.collection('Users');
-        final DocumentReference userDocument = usersCollection.doc(userId);
-        userDocument.update({'imageURL': imageURL}).then((_) {
+        final CollectionReference techniciansCollection =
+            FirebaseFirestore.instance.collection('Techniciens');
+        final DocumentReference technicianDocument = techniciansCollection.doc(userId);
+        technicianDocument.update({'imageURL': imageURL}).then((_) {
           setState(() {
             _imageURL = imageURL;
           });
@@ -90,13 +88,13 @@ class _NomEtPrenomContainerState extends State<NomEtPrenomContainer> {
   }
 
   Future<void> _loadProfilePicture() async {
-    final UserRepository userRepository = Get.find<UserRepository>();
+    final TechRepository techRepository = Get.find<TechRepository>();
     final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     final User? currentUser = _firebaseAuth.currentUser;
 
     if (currentUser != null) {
       final String? userEmail = currentUser.email;
-      final UserModel? user = await userRepository.getUserDetail(userEmail!);
+      final TechModel? user = await techRepository.getUserDetailss(userEmail!);
       if (user != null && user.imageURL != null) {
         setState(() {
           _imageURL = user.imageURL;
@@ -108,7 +106,6 @@ class _NomEtPrenomContainerState extends State<NomEtPrenomContainer> {
       }
     }
   }
-
   @override
   void initState() {
     super.initState();
@@ -117,12 +114,12 @@ class _NomEtPrenomContainerState extends State<NomEtPrenomContainer> {
 
   @override
   Widget build(BuildContext context) {
-    final UserRepository userRepository = Get.find<UserRepository>();
+    final TechRepository techRepository = Get.find<TechRepository>();
     final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     final User? currentUser = _firebaseAuth.currentUser;
-    UserModel? user;
+    TechModel? user;
 
-    return Container(
+       return Container(
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.center,
@@ -188,4 +185,3 @@ class _NomEtPrenomContainerState extends State<NomEtPrenomContainer> {
     );
   }
 }
-// TechnicianContainer

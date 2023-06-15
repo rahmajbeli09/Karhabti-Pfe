@@ -66,7 +66,7 @@ class LoginTech extends StatelessWidget {
                          AuthController.instance.login(controller.email.text.trim(), controller.password.text.trim());
                         controller.login();
                        }),
-                       SocialMedia()
+                      //  SocialMedia()
                         ],
                       ),
                     ),

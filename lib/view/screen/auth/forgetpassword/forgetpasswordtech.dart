@@ -6,11 +6,31 @@ import '../../../widget/auth/custombuttonauth.dart';
 import '../../../widget/auth/customtextbodyauth.dart';
 import '../../../widget/auth/customtextformauth.dart';
 import '../../../widget/auth/customtexttitleauth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // ignore: must_be_immutable
 class ForgetPasswordTech extends StatelessWidget {
    ForgetPasswordTech({Key? key}) : super(key: key);
 
  ForgetPasswordControllerImp controller = Get.put(ForgetPasswordControllerImp());
+  Future<void> passwordReset(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: controller.email.text.trim());
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(content: Text("Password reset link sent! Please check your email."));
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(content: Text(e.message.toString()));
+        },
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

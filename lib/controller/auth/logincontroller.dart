@@ -1,6 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:karhabti_pfe/core/constant/routes.dart';
 
@@ -22,16 +23,37 @@ class LoginControllerImp extends LoginController{
     update();
    }
 
-  login(){
-    var formdata = formstate.currentState;
-    if (formdata!.validate()){
-        print("valid");
-    }else{
-      print("not Valid");
+login() async {
+  var formdata = formstate.currentState;
+  if (formdata!.validate()) {
+    print("valid");
+    try {
+      await signIn(email.text.trim(), password.text.trim());
+      // Navigate to the home page if the login is successful
+      Get.offAllNamed(AppRoute.homescreen);
+    } catch (e) {
+      print("Login failed");
+      // Display a snackbar indicating the login failure
+      Get.snackbar(
+        "Login failed",
+        "Invalid email or password",
+        backgroundColor: Colors.redAccent,
+        snackPosition: SnackPosition.BOTTOM,
+        titleText: Text(
+          "Login failed",
+          style: TextStyle(color: Colors.white),
+        ),
+        messageText: Text(
+          "Invalid email or password",
+          style: TextStyle(color: Colors.white),
+        ),
+      );
     }
-    Get.offAllNamed(AppRoute.homescreen);
-
+  } else {
+    print("not Valid");
   }
+}
+
 
   
   @override

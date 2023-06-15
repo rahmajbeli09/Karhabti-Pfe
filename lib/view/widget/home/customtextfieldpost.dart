@@ -4,6 +4,7 @@ class CustomTextfieldAuth extends StatelessWidget {
   final String hinttext;
   final bool? obscureText ;
   final double height;
+  final TextEditingController? mycontroller;
   final void Function()? onTapIcon;
   final String labelText ;
   const CustomTextfieldAuth(
@@ -11,7 +12,8 @@ class CustomTextfieldAuth extends StatelessWidget {
       this.onTapIcon,
       required this.hinttext,
        this.obscureText, 
-       required this.height, required this.labelText,})
+       required this.height, required this.labelText,
+       required this.mycontroller,})
       : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class CustomTextfieldAuth extends StatelessWidget {
     return  Container(
         margin:const  EdgeInsets.only(bottom: 15),
         child: TextFormField(
+          controller: mycontroller,
           obscureText: obscureText == null || obscureText == false ? false : true,
           decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(

@@ -186,7 +186,7 @@ class MyTranslation extends Translations{
             "45" : "Cherchez-vous des pièces de rechange ? \n Avez-vous des pièces de rechange à vendre?",
             "46" : "Accueil",
             "47" : "Profil",
-            "48" : "Messagerie",
+            "48" : "Réclamations",
             "49" : "Historique",
             "50" : "Trouver un expert",
             "51" : "Préciser le type de panne",

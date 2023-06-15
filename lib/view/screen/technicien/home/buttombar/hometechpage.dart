@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:karhabti_pfe/controller/technicien/homepagetechcontroller.dart';
 import '../../../../../controller/client/homepagecontroller.dart';
 import '../../../../widget/home/nomet prenomcontainer.dart';
+import '../../../../widget/home/techphoto.dart';
 import '../../../../widget/home/verticalcontainer.dart';
 
 class HomeTechPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class HomeTechPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            NomEtPrenomContainer(),
+            TechnicianContainer(),
             SizedBox(height: 40,),
             InkWell(
               child: VerticalContainer(image: "assets/images/rendez-vous.png", text: "Consulter Vos rendez-vous"),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:karhabti_pfe/view/screen/admin/adminHomePage.dart';
 import 'package:karhabti_pfe/view/widget/boutton.dart';
 import '../../../controller/client/signuporlogincontroller.dart';
 
@@ -38,7 +39,6 @@ class SignUpOrLogin extends StatelessWidget {
                     Text("33".tr,
                     style: TextStyle(fontWeight: FontWeight.w500 , fontSize: 17 , fontFamily: "Comfortaa"), textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 45,),
                     Column(
                       children: [
                         Boutton(
@@ -55,6 +55,7 @@ class SignUpOrLogin extends StatelessWidget {
                             controller.goToSignUp();
                           } ,
                         ),
+                        Boutton(text: "admin", color: Colors.red , onPressed: (){ Get.to(AdminHomePage());},)
                       ],
                     ),
                      

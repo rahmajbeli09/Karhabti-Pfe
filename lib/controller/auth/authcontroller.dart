@@ -11,7 +11,12 @@ import 'package:flutter/material.dart';
 import '../../repository/user_repository/exceptions/signup_email_pwd_failure.dart';
 import '../../repository/user_repository/tech_repository.dart';
 import '../../services/tech_model.dart';
+import '../../view/screen/client/homepage/buttombar/homepage.dart';
 import '../../view/screen/technicien/home/hometechscreen.dart';
+
+import 'package:google_sign_in/google_sign_in.dart';
+
+
 
 
 class AuthController extends GetxController {
@@ -30,6 +35,20 @@ void onReady(){
  firebaseUser.bindStream(auth.userChanges());
  ever(firebaseUser, _initialScreen); 
  }
+ // i need to check with this method if it works i need to apply it for technician
+// Widget handleAuthState() {
+//   return StreamBuilder<User?>(
+//     stream: FirebaseAuth.instance.authStateChanges(),
+//     builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+//       if (snapshot.hasData) {
+//         return HomeScreen();
+//       } else {
+//         return Login();
+//       }
+//     },
+//   );
+// }
+
 void _initialScreen(User? user) async {
   if (user == null) {
     // user is not logged in, show login page
@@ -51,6 +70,9 @@ void _initialScreen(User? user) async {
     }
   }
 }
+
+
+
   void register(String email , password)async{
     try{
   await auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -59,16 +81,15 @@ if (firebaseUser.value != null) {
 } else {
   Get.offAll(() => HomeScreen());
 }
- //Homescreen
-    }on FirebaseAuthException catch(e){
-final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
-print('FIREBASE AUTH EXCEPTION - ${ex.message}');
-throw ex;
+
     
-    }catch(_){
-      const ex = SignUpWithEmailAndPasswordFailure();
-      print('EXCEPTION - ${ex.message}');
-      throw ex;
+    }catch(e){
+            Get.snackbar(
+        "error",
+        "please verify your data! ",
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.red,
+      );
     }
   
   }
@@ -76,13 +97,8 @@ throw ex;
 await userRepo.createUser(user);
   }
 Future<void> createTech(TechModel user) async {
-  //final userId = AuthController.instance.getUserId();
-  //if (userId == null) {
- //   throw Exception("User id not found");
-  
   await techRepo.createTech(user);
 }
-
 
     void login(String email , password)async{ //hedhiya bdit feha w makamaltech fel login.dart en attendant el bouton logout bch ntesti bih
     try{
@@ -106,8 +122,6 @@ Future<void> createTech(TechModel user) async {
           )
           );
     }
-  
-
   }
     String? getUserEmail() {
     return firebaseUser.value?.email;
@@ -116,5 +130,4 @@ Future<void> createTech(TechModel user) async {
     await auth.signOut();
   }
   
-
 }
